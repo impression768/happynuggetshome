@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Nuggets Home Support</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #111827;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 24px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: #4b5563;
+    }
+
+    input[type="email"],
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 15px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    input[type="email"] {
+      min-height: 0;
+      height: 44px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #0f766e;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    .status.success {
+      color: #047857;
+    }
+
+    .status.error {
+      color: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Contact Support</h1>
+    <p>Write your message below and submit it.</p>
+
+    <form id="supportForm">
+      <input
+        id="senderEmail"
+        name="senderEmail"
+        type="email"
+        placeholder="Your email address"
+        maxlength="320"
+        required
+      >
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Type your support message..."
+        maxlength="2000"
+        required
+      ></textarea>
+      <br>
+      <button id="submitButton" type="submit">Submit</button>
+      <div id="status" class="status" aria-live="polite"></div>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+  <script>
+    window.SUPPORT_API_BASE_URL = 'https://langy-api-20tk.onrender.com';
+  </script>
+  <script src="./supportService.js"></script>
+  <script>
+    const form = document.getElementById('supportForm');
+    const senderEmailInput = document.getElementById('senderEmail');
+    const messageInput = document.getElementById('message');
+    const statusEl = document.getElementById('status');
+    const submitButton = document.getElementById('submitButton');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const setStatus = (text, type) => {
+      statusEl.textContent = text;
+      statusEl.className = type ? 'status ' + type : 'status';
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const senderEmail = senderEmailInput.value.trim().toLowerCase();
+      if (!senderEmail) {
+        setStatus('Email is required.', 'error');
+        return;
+      }
+      if (!emailRegex.test(senderEmail)) {
+        setStatus('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      const message = messageInput.value.trim();
+      if (!message) {
+        setStatus('Message is required.', 'error');
+        return;
+      }
+
+      submitButton.disabled = true;
+      setStatus('Sending...', '');
+
+      try {
+        await window.supportService.createSupportMessage({
+          senderEmail,
+          message,
+          source: 'happynuggetshome',
+        });
+
+        senderEmailInput.value = '';
+        messageInput.value = '';
+        setStatus('Message sent successfully.', 'success');
+      } catch (error) {
+        const apiError = error?.response?.data?.error;
+        setStatus(apiError || 'Failed to send message.', 'error');
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
