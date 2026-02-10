@@ -143,6 +143,18 @@
       margin-bottom: 12px;
     }
 
+    .message-counter {
+      margin-top: 8px;
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .message-counter.limit-reached {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+
     button {
       margin-top: 12px;
       width: 100%;
@@ -207,7 +219,7 @@
         maxlength="2000"
         required
       ></textarea>
-      <br>
+      <div id="messageCounter" class="message-counter">2000 characters remaining</div>
       <button id="submitButton" type="submit">Submit</button>
       <div id="status" class="status" aria-live="polite"></div>
     </form>
@@ -222,6 +234,7 @@
     const form = document.getElementById('supportForm');
     const senderEmailInput = document.getElementById('senderEmail');
     const messageInput = document.getElementById('message');
+    const messageCounterEl = document.getElementById('messageCounter');
     const statusEl = document.getElementById('status');
     const submitButton = document.getElementById('submitButton');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -239,11 +252,14 @@
       statusEl.className = type ? 'status ' + type : 'status';
     };
 
-    const sanitizeMessage = (value) => {
+    const normalizeMessage = (value) => {
       return String(value || '')
         .replace(/\r\n/g, '\n')
-        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
-        .slice(0, MAX_MESSAGE_LENGTH);
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
+    };
+
+    const sanitizeMessage = (value) => {
+      return normalizeMessage(value).slice(0, MAX_MESSAGE_LENGTH);
     };
 
     const hasDisallowedContent = (value) => {
@@ -257,26 +273,38 @@
       return insertedText.slice(0, Math.max(0, available));
     };
 
+    const updateMessageCounter = () => {
+      const used = messageInput.value.length;
+      const remaining = MAX_MESSAGE_LENGTH - used;
+      messageCounterEl.textContent = remaining + ' characters remaining';
+      messageCounterEl.classList.toggle('limit-reached', remaining === 0);
+    };
+
     messageInput.addEventListener('input', () => {
-      const sanitized = sanitizeMessage(messageInput.value);
-      if (sanitized !== messageInput.value) {
+      const rawValue = messageInput.value;
+      const sanitized = sanitizeMessage(rawValue);
+      if (sanitized !== rawValue) {
         messageInput.value = sanitized;
+        setStatus('Message is limited to 2000 characters.', 'error');
       }
+      updateMessageCounter();
     });
 
     messageInput.addEventListener('paste', (event) => {
       event.preventDefault();
 
-      const pastedText = event.clipboardData?.getData('text/plain') || '';
+      const pastedText = event.clipboardData?.getData('text/plain')
+        || window.clipboardData?.getData('Text')
+        || '';
       if (!pastedText) {
         return;
       }
 
       const selectionStart = messageInput.selectionStart ?? messageInput.value.length;
       const selectionEnd = messageInput.selectionEnd ?? messageInput.value.length;
-      const sanitizedPaste = sanitizeMessage(pastedText);
+      const normalizedPaste = normalizeMessage(pastedText);
 
-      if (hasDisallowedContent(sanitizedPaste)) {
+      if (hasDisallowedContent(normalizedPaste)) {
         setStatus('Only plain text is allowed in the message.', 'error');
         return;
       }
@@ -285,18 +313,19 @@
         messageInput.value,
         selectionStart,
         selectionEnd,
-        sanitizedPaste
+        normalizedPaste
       );
 
       const nextValue = messageInput.value.slice(0, selectionStart)
         + allowedPaste
         + messageInput.value.slice(selectionEnd);
       messageInput.value = sanitizeMessage(nextValue);
+      updateMessageCounter();
 
       const cursorPosition = selectionStart + allowedPaste.length;
       messageInput.setSelectionRange(cursorPosition, cursorPosition);
 
-      if (allowedPaste.length < sanitizedPaste.length) {
+      if (allowedPaste.length < normalizedPaste.length) {
         setStatus('Message is limited to 2000 characters.', 'error');
       }
     });
@@ -329,6 +358,7 @@
       }
 
       messageInput.value = message;
+      updateMessageCounter();
 
       submitButton.disabled = true;
       setStatus('Sending...', '');
@@ -342,6 +372,7 @@
 
         senderEmailInput.value = '';
         messageInput.value = '';
+        updateMessageCounter();
         setStatus('Message sent successfully.', 'success');
       } catch (error) {
         const apiError = error?.response?.data?.error;
@@ -350,6 +381,8 @@
         submitButton.disabled = false;
       }
     });
+
+    updateMessageCounter();
   </script>
 </body>
 </html>
