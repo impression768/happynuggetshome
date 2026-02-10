@@ -225,11 +225,81 @@
     const statusEl = document.getElementById('status');
     const submitButton = document.getElementById('submitButton');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const MAX_MESSAGE_LENGTH = 2000;
+    const disallowedMessagePatterns = [
+      /<\s*\/?\s*script\b/i,
+      /<\s*\/?\s*[a-z][^>]*>/i,
+      /javascript:/i,
+      /data:\s*text\/html/i,
+      /on[a-z]+\s*=/i,
+    ];
 
     const setStatus = (text, type) => {
       statusEl.textContent = text;
       statusEl.className = type ? 'status ' + type : 'status';
     };
+
+    const sanitizeMessage = (value) => {
+      return String(value || '')
+        .replace(/\r\n/g, '\n')
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+        .slice(0, MAX_MESSAGE_LENGTH);
+    };
+
+    const hasDisallowedContent = (value) => {
+      return disallowedMessagePatterns.some((pattern) => pattern.test(value));
+    };
+
+    const fitInsertedTextToLimit = (currentValue, selectionStart, selectionEnd, insertedText) => {
+      const currentLength = currentValue.length;
+      const selectedLength = Math.max(0, selectionEnd - selectionStart);
+      const available = MAX_MESSAGE_LENGTH - (currentLength - selectedLength);
+      return insertedText.slice(0, Math.max(0, available));
+    };
+
+    messageInput.addEventListener('input', () => {
+      const sanitized = sanitizeMessage(messageInput.value);
+      if (sanitized !== messageInput.value) {
+        messageInput.value = sanitized;
+      }
+    });
+
+    messageInput.addEventListener('paste', (event) => {
+      event.preventDefault();
+
+      const pastedText = event.clipboardData?.getData('text/plain') || '';
+      if (!pastedText) {
+        return;
+      }
+
+      const selectionStart = messageInput.selectionStart ?? messageInput.value.length;
+      const selectionEnd = messageInput.selectionEnd ?? messageInput.value.length;
+      const sanitizedPaste = sanitizeMessage(pastedText);
+
+      if (hasDisallowedContent(sanitizedPaste)) {
+        setStatus('Only plain text is allowed in the message.', 'error');
+        return;
+      }
+
+      const allowedPaste = fitInsertedTextToLimit(
+        messageInput.value,
+        selectionStart,
+        selectionEnd,
+        sanitizedPaste
+      );
+
+      const nextValue = messageInput.value.slice(0, selectionStart)
+        + allowedPaste
+        + messageInput.value.slice(selectionEnd);
+      messageInput.value = sanitizeMessage(nextValue);
+
+      const cursorPosition = selectionStart + allowedPaste.length;
+      messageInput.setSelectionRange(cursorPosition, cursorPosition);
+
+      if (allowedPaste.length < sanitizedPaste.length) {
+        setStatus('Message is limited to 2000 characters.', 'error');
+      }
+    });
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -244,11 +314,21 @@
         return;
       }
 
-      const message = messageInput.value.trim();
+      const message = sanitizeMessage(messageInput.value).trim();
       if (!message) {
         setStatus('Message is required.', 'error');
         return;
       }
+      if (message.length > MAX_MESSAGE_LENGTH) {
+        setStatus('Message is limited to 2000 characters.', 'error');
+        return;
+      }
+      if (hasDisallowedContent(message)) {
+        setStatus('Only plain text is allowed in the message.', 'error');
+        return;
+      }
+
+      messageInput.value = message;
 
       submitButton.disabled = true;
       setStatus('Sending...', '');
