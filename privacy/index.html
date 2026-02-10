@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon.png">
+  <title>Nuggets – Legal</title>
+  <style>
+    @font-face {
+      font-family: "RubikMonoOne";
+      src: url("../RubikMonoOne_400Regular.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: light;
+      --primary: #e8762c;
+      --primary-strong: #c8601f;
+      --text: #2b2b2b;
+      --text-muted: #5a5a5a;
+      --surface: rgba(255, 250, 244, 0.94);
+      --surface-border: #f5d5b2;
+      --field-bg: #fff6ea;
+      --field-border: #f8e6d1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: clamp(18px, 4vw, 44px);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% -5%, #ffe7cb 0%, transparent 45%),
+        radial-gradient(circle at 92% 12%, #ffd8b0 0%, transparent 40%),
+        linear-gradient(155deg, #fff8f1 0%, #ffefd9 100%);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      width: min(52vw, 480px);
+      height: min(52vw, 480px);
+      right: -140px;
+      top: min(46vh, 320px);
+      background: radial-gradient(circle, rgba(232, 118, 44, 0.2), rgba(232, 118, 44, 0));
+    }
+
+    body::after {
+      width: min(42vw, 340px);
+      height: min(42vw, 340px);
+      left: -120px;
+      top: min(52vh, 420px);
+      background: radial-gradient(circle, rgba(255, 204, 153, 0.28), rgba(255, 204, 153, 0));
+    }
+
+    .container {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 34px);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 26px;
+      box-shadow: 0 20px 48px rgba(148, 78, 29, 0.13);
+      backdrop-filter: blur(3px);
+    }
+
+    .corner-logo {
+      position: fixed;
+      top: clamp(10px, 2.2vw, 20px);
+      left: clamp(10px, 2.2vw, 20px);
+      width: clamp(70px, 10vw, 120px);
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 16px rgba(120, 70, 30, 0.15));
+    }
+
+    .brand-logo {
+      margin: 4px 0 6px;
+      font-family: "RubikMonoOne", "Rubik Mono One", sans-serif;
+      font-size: clamp(30px, 8vw, 42px);
+      letter-spacing: 0.6px;
+      line-height: 1.08;
+      text-align: center;
+      color: var(--primary);
+      text-shadow: 0 2px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    .brand-logo a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      margin: 16px 0 20px;
+      padding: 4px;
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
+      border-radius: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 16px;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      box-shadow: none;
+      margin: 0;
+      width: auto;
+    }
+
+    .tab-btn:hover:enabled {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(140deg, var(--primary) 0%, var(--primary-strong) 100%);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(200, 96, 31, 0.2);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .legal-heading {
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 4px;
+    }
+
+    .legal-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 0 0 16px;
+    }
+
+    .legal-section {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 20px 0 8px;
+    }
+
+    .legal-subsection {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 12px 0 6px;
+    }
+
+    .legal-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin: 0 0 8px;
+    }
+
+    .legal-text.uppercase {
+      text-transform: none;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    ul.legal-list {
+      margin: 0 0 8px;
+      padding-left: 8px;
+      list-style: none;
+    }
+
+    ul.legal-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    ul.legal-list li::before {
+      content: "•";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <img class="corner-logo" src="../livy-logo-tp.png" alt="Livy logo">
+  <main class="container">
+    <div class="brand-logo"><a href="../">Nuggets</a></div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="terms">Terms of Service</button>
+      <button class="tab-btn" data-tab="privacy">Privacy Policy</button>
+    </div>
+
+    <!-- Terms of Service -->
+    <div id="terms" class="tab-content active">
+      <h2 class="legal-heading">Terms of Service</h2>
+      <p class="legal-meta">Last updated: February 10, 2026</p>
+
+      <p class="legal-text">These Terms of Service ("Terms") constitute a legal agreement between you ("User", "You") and the operator of Nuggets ("We", "Us", "Our", the "Developer"). By creating an account or using the Nuggets application ("App", "Service"), you agree to be bound by these Terms. If you do not agree, do not use the Service.</p>
+
+      <h3 class="legal-section">1. Acceptance of Terms</h3>
+      <p class="legal-text">By accessing, downloading, installing, or using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. These Terms apply to all users of the Service.</p>
+
+      <h3 class="legal-section">2. Description of Service</h3>
+      <p class="legal-text">Nuggets is a phrase-learning application that allows users to create, store, and review language-learning phrase cards ("Nuggets"). The Service includes an iOS application, an optional home screen widget, and supporting backend services.</p>
+
+      <h3 class="legal-section">3. Eligibility</h3>
+      <ul class="legal-list">
+        <li>You must be at least 18 years old, or the minimum legal age in your jurisdiction, to use the Service.</li>
+        <li>By using the Service, you represent and warrant that you meet the eligibility requirements and have the legal capacity to enter into these Terms.</li>
+      </ul>
+
+      <h3 class="legal-section">4. User Accounts</h3>
+      <ul class="legal-list">
+        <li>You must register with a valid email address and password to use the Service.</li>
+        <li>You are solely responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</li>
+        <li>You agree to provide accurate, current, and complete information during registration.</li>
+        <li>You must notify Us immediately of any unauthorized use of your account.</li>
+      </ul>
+
+      <h3 class="legal-section">5. User Content</h3>
+      <p class="legal-text">"User Content" refers to any data you submit through the Service, including but not limited to phrase cards, text entries, and profile information.</p>
+      <ul class="legal-list">
+        <li>You retain ownership of your User Content.</li>
+        <li>By submitting User Content, you grant Us a worldwide, royalty-free, non-exclusive, sublicensable license to host, store, process, and display such content solely for the purpose of providing and improving the Service.</li>
+        <li>You represent that you have all necessary rights to submit your User Content and that it does not infringe any third-party rights.</li>
+      </ul>
+
+      <h3 class="legal-section">6. Prohibited Conduct</h3>
+      <p class="legal-text">You agree not to:</p>
+      <ul class="legal-list">
+        <li>Use the Service for any unlawful purpose or in violation of any applicable laws or regulations.</li>
+        <li>Upload or transmit content that is illegal, harmful, threatening, abusive, harassing, defamatory, vulgar, obscene, or otherwise objectionable.</li>
+        <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity.</li>
+        <li>Attempt to gain unauthorized access to the Service, other user accounts, or any related systems or networks.</li>
+        <li>Interfere with or disrupt the integrity, security, or performance of the Service.</li>
+        <li>Upload or distribute viruses, malware, or any other malicious code.</li>
+        <li>Collect or harvest personal information of other users.</li>
+        <li>Use the Service for commercial purposes without Our prior written consent.</li>
+      </ul>
+
+      <h3 class="legal-section">7. Content Moderation</h3>
+      <ul class="legal-list">
+        <li>We maintain a zero-tolerance policy for objectionable, illegal, or abusive content.</li>
+        <li>We reserve the right to review, filter, and remove any User Content that violates these Terms, at Our sole discretion and without prior notice.</li>
+        <li>You may report objectionable content using the reporting features within the App.</li>
+      </ul>
+
+      <h3 class="legal-section">8. Intellectual Property</h3>
+      <ul class="legal-list">
+        <li>All rights, title, and interest in and to the Service, including but not limited to the App design, code, graphics, logos, and trademarks (excluding User Content), are and shall remain the exclusive property of the Developer or its licensors.</li>
+        <li>These Terms do not grant you any right to use Our trademarks, logos, or brand features.</li>
+      </ul>
+
+      <h3 class="legal-section">9. Third-Party Services</h3>
+      <p class="legal-text">The Service relies on third-party service providers including but not limited to Firebase (authentication and database), Vercel (hosting), and Apple (push notifications, widgets). Your use of these services is subject to their respective terms and policies. We are not responsible for the practices of any third-party services.</p>
+
+      <h3 class="legal-section">10. Termination</h3>
+      <ul class="legal-list">
+        <li>We may suspend or terminate your account and access to the Service at any time, with or without cause, with or without notice.</li>
+        <li>You may delete your account at any time through the App settings or by contacting Us.</li>
+        <li>Upon termination, your rights under these Terms immediately cease. Sections that by their nature should survive termination shall survive.</li>
+      </ul>
+
+      <h3 class="legal-section">11. Disclaimer of Warranties</h3>
+      <p class="legal-text uppercase">THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, ERROR-FREE, OR THAT DEFECTS WILL BE CORRECTED.</p>
+
+      <h3 class="legal-section">12. Limitation of Liability</h3>
+      <p class="legal-text uppercase">TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, THE DEVELOPER SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF DATA, LOSS OF PROFITS, OR BUSINESS INTERRUPTION, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF OR INABILITY TO USE THE SERVICE, REGARDLESS OF THE THEORY OF LIABILITY.</p>
+
+      <h3 class="legal-section">13. Indemnification</h3>
+      <p class="legal-text">You agree to indemnify, defend, and hold harmless the Developer from and against any and all claims, liabilities, damages, losses, and expenses (including reasonable attorneys' fees) arising out of or in connection with your use of the Service, your User Content, or your violation of these Terms.</p>
+
+      <h3 class="legal-section">14. Governing Law</h3>
+      <p class="legal-text">These Terms shall be governed by and construed in accordance with the laws of the State of Israel, without regard to conflict of laws principles. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts located in Israel.</p>
+
+      <h3 class="legal-section">15. Changes to These Terms</h3>
+      <p class="legal-text">We reserve the right to modify these Terms at any time. We will notify you of material changes by posting the updated Terms within the App or by email. Your continued use of the Service after such changes constitutes acceptance of the revised Terms.</p>
+
+      <h3 class="legal-section">16. Severability</h3>
+      <p class="legal-text">If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
+
+      <h3 class="legal-section">17. Entire Agreement</h3>
+      <p class="legal-text">These Terms, together with the Privacy Policy, constitute the entire agreement between you and the Developer regarding the use of the Service and supersede all prior agreements and understandings.</p>
+
+      <h3 class="legal-section">18. Contact</h3>
+      <p class="legal-text">If you have any questions about these Terms, contact us at:<br><strong>nuggets.livytech.space</strong></p>
+
+      <a class="back-link" href="../">← Back to Home</a>
+    </div>
+
+    <!-- Privacy Policy -->
+    <div id="privacy" class="tab-content">
+      <h2 class="legal-heading">Privacy Policy</h2>
+      <p class="legal-meta">Last updated: February 10, 2026</p>
+
+      <p class="legal-text">This Privacy Policy describes how We collect, use, and disclose your information when you use the Nuggets application ("App", "Service"). By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+      <h3 class="legal-section">1. Definitions</h3>
+      <ul class="legal-list">
+        <li><strong>"Account"</strong> means a unique account created for you to access the Service.</li>
+        <li><strong>"Personal Data"</strong> means any information that relates to an identified or identifiable individual.</li>
+        <li><strong>"Usage Data"</strong> refers to data collected automatically when using the Service (e.g., page visits, session duration).</li>
+        <li><strong>"Device"</strong> means any device that can access the Service, such as a phone, tablet, or computer.</li>
+        <li><strong>"Service Provider"</strong> means any third-party company or individual employed to facilitate the Service (e.g., Firebase, Vercel).</li>
+        <li><strong>"We", "Us", "Our"</strong> refers to the Developer/operator of the App.</li>
+        <li><strong>"You"</strong> means the individual accessing or using the Service.</li>
+        <li><strong>"Country"</strong> refers to Israel.</li>
+      </ul>
+
+      <h3 class="legal-section">2. Personal Data We Collect</h3>
+      <p class="legal-text">When you use Our Service, We may collect the following types of information:</p>
+
+      <h4 class="legal-subsection">Account Information</h4>
+      <ul class="legal-list">
+        <li>Email address (required for registration)</li>
+        <li>Account credentials (password is hashed and managed by Firebase Authentication)</li>
+      </ul>
+
+      <h4 class="legal-subsection">Usage Data</h4>
+      <ul class="legal-list">
+        <li>Device type, operating system, and unique device identifiers</li>
+        <li>IP address and browser/app information</li>
+        <li>Pages visited, time and date of visits, time spent on pages</li>
+        <li>Other diagnostic data</li>
+      </ul>
+
+      <h4 class="legal-subsection">User-Generated Content</h4>
+      <ul class="legal-list">
+        <li>Phrase cards and text entries you create within the App</li>
+        <li>Profile settings and preferences (e.g., widget frequency, notification preferences)</li>
+      </ul>
+
+      <h3 class="legal-section">3. How We Use Your Data</h3>
+      <p class="legal-text">We use your Personal Data for the following purposes:</p>
+      <ul class="legal-list">
+        <li>To provide and maintain the Service, including monitoring usage and performance.</li>
+        <li>To manage your Account and provide access to Service features available to registered users.</li>
+        <li>To store and sync your phrase cards across the App and widget.</li>
+        <li>To contact you regarding updates, security notices, or important information about the Service.</li>
+        <li>To manage your requests and provide support.</li>
+        <li>For analytics and service improvement, including identifying usage trends and evaluating the effectiveness of Service features.</li>
+      </ul>
+
+      <h3 class="legal-section">4. Authentication and Session Management</h3>
+      <p class="legal-text">We use Firebase Authentication to manage your login sessions. This involves:</p>
+      <ul class="legal-list">
+        <li>Authentication tokens stored securely on your device to maintain your login state.</li>
+        <li>Local storage used to remember your last visited page and app preferences.</li>
+      </ul>
+      <p class="legal-text">These technologies are essential for the Service to function. You can clear local data through your device settings, which will log you out.</p>
+
+      <h3 class="legal-section">5. Data Sharing</h3>
+      <p class="legal-text">We may share your information in the following situations:</p>
+      <ul class="legal-list">
+        <li><strong>With Service Providers:</strong> We share data with Firebase (authentication, database), Vercel (hosting), and other infrastructure providers necessary to operate the Service.</li>
+        <li><strong>Legal Requirements:</strong> We may disclose your data if required by law, legal process, or valid governmental requests.</li>
+        <li><strong>Protection:</strong> To protect the rights, property, or safety of the Developer, users of the Service, or the public.</li>
+      </ul>
+      <p class="legal-text"><strong>We do not sell your Personal Data to third parties.</strong></p>
+
+      <h3 class="legal-section">6. Email Notifications</h3>
+      <p class="legal-text">We may send you email notifications in the following cases:</p>
+      <ul class="legal-list">
+        <li>Account-related emails (verification, password reset) — these are essential and cannot be disabled.</li>
+        <li>Service updates and important notices.</li>
+      </ul>
+      <p class="legal-text">All emails are sent to the email address you provided during registration.</p>
+
+      <h3 class="legal-section">7. Data Retention</h3>
+      <ul class="legal-list">
+        <li>We retain your Personal Data only as long as necessary for the purposes described in this Privacy Policy.</li>
+        <li>We retain Usage Data for internal analysis for a shorter period, unless needed for security improvements or legal obligations.</li>
+        <li>When you delete your account, We will delete or anonymize your Personal Data, except where retention is required by law.</li>
+      </ul>
+
+      <h3 class="legal-section">8. Data Transfer</h3>
+      <p class="legal-text">Your information, including Personal Data, is processed on servers provided by our Service Providers (Firebase, Vercel) and may be transferred to and maintained on servers located outside your jurisdiction. By using the Service, you consent to this transfer. We take reasonable steps to ensure your data is treated securely.</p>
+
+      <h3 class="legal-section">9. Your Rights</h3>
+      <p class="legal-text">You have the right to:</p>
+      <ul class="legal-list">
+        <li><strong>Access:</strong> Request a copy of the Personal Data We hold about you.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate Personal Data.</li>
+        <li><strong>Deletion:</strong> Request deletion of your Personal Data by deleting your account through the App or by contacting Us.</li>
+        <li><strong>Portability:</strong> Request a copy of your data in a structured, commonly used format.</li>
+      </ul>
+      <p class="legal-text">To exercise these rights, contact Us using the information provided below.</p>
+
+      <h3 class="legal-section">10. Data Security</h3>
+      <p class="legal-text">The security of your Personal Data is important to Us. We use commercially acceptable means to protect your data, including encryption in transit and at rest via Firebase. However, no method of transmission over the Internet or electronic storage is 100% secure, and We cannot guarantee absolute security.</p>
+
+      <h3 class="legal-section">11. Children's Privacy</h3>
+      <p class="legal-text">The Service is not intended for anyone under the age of 18. We do not knowingly collect Personal Data from children under 18. If you are a parent or guardian and become aware that your child has provided Us with Personal Data, please contact Us. If We become aware of such collection without parental consent, We will take steps to remove that information.</p>
+
+      <h3 class="legal-section">12. Third-Party Links</h3>
+      <p class="legal-text">The Service may contain links to third-party websites or services not operated by Us. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. We encourage you to review the privacy policy of every site you visit.</p>
+
+      <h3 class="legal-section">13. Changes to This Privacy Policy</h3>
+      <p class="legal-text">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy within the App and updating the "Last updated" date. Continued use of the Service after changes constitutes acceptance.</p>
+
+      <h3 class="legal-section">14. Contact Us</h3>
+      <p class="legal-text">If you have any questions about this Privacy Policy, you can contact us at:<br><strong>nuggets.livytech.space</strong></p>
+
+      <a class="back-link" href="../">← Back to Home</a>
+    </div>
+  </main>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Support direct linking via hash
+    if (window.location.hash === '#privacy') {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      document.querySelector('[data-tab="privacy"]').classList.add('active');
+      document.getElementById('privacy').classList.add('active');
+    }
+  </script>
+</body>
+</html>
