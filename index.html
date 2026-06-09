@@ -4,385 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="48x48" href="./favicon.png">
-  <title>Livy Tech</title>
-  <style>
-    @font-face {
-      font-family: "RubikMonoOne";
-      src: url("./RubikMonoOne_400Regular.ttf") format("truetype");
-      font-display: swap;
-    }
-
-    :root {
-      color-scheme: light;
-      --primary: #e8762c;
-      --primary-strong: #c8601f;
-      --text: #2b2b2b;
-      --text-muted: #5a5a5a;
-      --surface: rgba(255, 250, 244, 0.94);
-      --surface-border: #f5d5b2;
-      --field-bg: #fff6ea;
-      --field-border: #f8e6d1;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      padding: clamp(18px, 4vw, 44px);
-      font-family: "Avenir Next", "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 8% -5%, #ffe7cb 0%, transparent 45%),
-        radial-gradient(circle at 92% 12%, #ffd8b0 0%, transparent 40%),
-        linear-gradient(155deg, #fff8f1 0%, #ffefd9 100%);
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      border-radius: 999px;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    body::before {
-      width: min(52vw, 480px);
-      height: min(52vw, 480px);
-      right: -140px;
-      top: min(46vh, 320px);
-      background: radial-gradient(circle, rgba(232, 118, 44, 0.2), rgba(232, 118, 44, 0));
-    }
-
-    body::after {
-      width: min(42vw, 340px);
-      height: min(42vw, 340px);
-      left: -120px;
-      top: min(52vh, 420px);
-      background: radial-gradient(circle, rgba(255, 204, 153, 0.28), rgba(255, 204, 153, 0));
-    }
-
-    .container {
-      width: min(640px, 100%);
-      margin: 0 auto;
-      padding: clamp(20px, 4vw, 34px);
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 26px;
-      box-shadow: 0 20px 48px rgba(148, 78, 29, 0.13);
-      backdrop-filter: blur(3px);
-    }
-
-    .corner-logo {
-      position: fixed;
-      top: clamp(10px, 2.2vw, 20px);
-      left: clamp(10px, 2.2vw, 20px);
-      width: clamp(70px, 10vw, 120px);
-      height: auto;
-      z-index: 2;
-      pointer-events: none;
-      filter: drop-shadow(0 6px 16px rgba(120, 70, 30, 0.15));
-    }
-
-    .brand-logo {
-      margin: 4px 0 10px;
-      font-family: "RubikMonoOne", "Rubik Mono One", sans-serif;
-      font-size: clamp(30px, 8vw, 42px);
-      letter-spacing: 0.6px;
-      line-height: 1.08;
-      text-align: center;
-      color: var(--primary);
-      text-shadow: 0 2px 0 rgba(255, 255, 255, 0.72);
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(22px, 5vw, 27px);
-      text-align: center;
-    }
-
-    p {
-      margin: 0 0 20px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-
-    form {
-      margin-top: 6px;
-    }
-
-    input[type="email"],
-    textarea {
-      width: 100%;
-      min-height: 140px;
-      padding: 12px 14px;
-      border: 1px solid var(--field-border);
-      background: var(--field-bg);
-      border-radius: 16px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--text);
-      resize: vertical;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    input[type="email"]:focus,
-    textarea:focus {
-      border-color: #f1bb8e;
-      box-shadow: 0 0 0 3px rgba(232, 118, 44, 0.16);
-      outline: none;
-    }
-
-    input[type="email"] {
-      min-height: 0;
-      height: 44px;
-      margin-bottom: 12px;
-    }
-
-    .message-counter {
-      margin-top: 8px;
-      text-align: right;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .message-counter.limit-reached {
-      color: #b91c1c;
-      font-weight: 600;
-    }
-
-    button {
-      margin-top: 12px;
-      width: 100%;
-      padding: 12px 16px;
-      border: 0;
-      border-radius: 999px;
-      background: linear-gradient(140deg, var(--primary) 0%, var(--primary-strong) 100%);
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(200, 96, 31, 0.26);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    button:hover:enabled {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 26px rgba(200, 96, 31, 0.32);
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
-
-    .status {
-      margin-top: 12px;
-      font-size: 14px;
-      min-height: 20px;
-      text-align: center;
-    }
-
-    .status.success {
-      color: #047857;
-    }
-
-    .status.error {
-      color: #b91c1c;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
+  <title>LivyTech | Home</title>
 </head>
-<body>
-  <img class="corner-logo" src="./livy-logo-tp.png" alt="Livy logo">
-  <main class="container">
-    <div class="brand-logo">Nuggets</div>
-    <h1>Contact Support</h1>
-    <p>Write your message below and submit it.</p>
+<body class="home-page">
+  <header class="site-header">
+    <a class="logo-link" href="./" aria-label="LivyTech home">
+      <img src="./livy-logo-tp.png" alt="LivyTech logo">
+      <span class="logo-text">LivyTech</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="nav-link" href="#products">Products</a>
+      <a class="nav-link" href="./nuggets/">Nuggets</a>
+      <a class="nav-link" href="./smilefit/">SmileFit</a>
+    </nav>
+  </header>
 
-    <form id="supportForm">
-      <input
-        id="senderEmail"
-        name="senderEmail"
-        type="email"
-        placeholder="Your email address"
-        maxlength="320"
-        required
-      >
-      <textarea
-        id="message"
-        name="message"
-        placeholder="Type your support message..."
-        maxlength="2000"
-        required
-      ></textarea>
-      <div id="messageCounter" class="message-counter">2000 characters remaining</div>
-      <button id="submitButton" type="submit">Submit</button>
-      <div id="status" class="status" aria-live="polite"></div>
-    </form>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Independent app studio</p>
+        <h1>LivyTech</h1>
+        <p class="lede">LivyTech builds focused mobile products for learning, wellness, and everyday routines. Our products are designed to stay simple, practical, and easy to return to.</p>
+        <div class="button-row">
+          <a class="button primary" href="./nuggets/">Nuggets</a>
+          <a class="button secondary" href="./smilefit/">SmileFit</a>
+        </div>
+      </div>
+
+      <aside class="brand-panel" aria-label="LivyTech product focus">
+        <img src="./livy-logo-tp.png" alt="">
+        <p>Small tools, clear support paths, and transparent product policies for each LivyTech app.</p>
+        <div class="brand-list">
+          <span>Nuggets</span>
+          <span>SmileFit</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="products" class="band">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Products</p>
+            <h2>Apps by LivyTech</h2>
+          </div>
+          <p>Each product page includes a short description, support email, terms, and privacy policy.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card product-card-nuggets">
+            <div class="product-meta">
+              <span class="meta-pill">Language learning</span>
+            </div>
+            <h3>Nuggets</h3>
+            <p>Nuggets helps learners create, save, and review useful phrase cards for everyday language practice.</p>
+            <p class="support-line">Support: <a href="mailto:nuggets@livytech.space">nuggets@livytech.space</a></p>
+            <div class="button-row">
+              <a class="button primary" href="./nuggets/">Open Nuggets</a>
+            </div>
+          </article>
+
+          <article class="product-card product-card-smilefit">
+            <div class="product-meta">
+              <span class="meta-pill alt">Personal wellness</span>
+            </div>
+            <h3>SmileFit</h3>
+            <p>SmileFit offers short guided smile and facial exercise sessions for personal wellness routines.</p>
+            <p class="support-line">Support: <a href="mailto:smilfit@livytech.space">smilfit@livytech.space</a></p>
+            <div class="button-row">
+              <a class="button primary" href="./smilefit/">Open SmileFit</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
-  <script>
-    window.SUPPORT_API_BASE_URL = 'https://langy-api-20tk.onrender.com';
-  </script>
-  <script src="./supportService.js"></script>
-  <script>
-    const form = document.getElementById('supportForm');
-    const senderEmailInput = document.getElementById('senderEmail');
-    const messageInput = document.getElementById('message');
-    const messageCounterEl = document.getElementById('messageCounter');
-    const statusEl = document.getElementById('status');
-    const submitButton = document.getElementById('submitButton');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const MAX_MESSAGE_LENGTH = 2000;
-    const disallowedMessagePatterns = [
-      /<\s*\/?\s*script\b/i,
-      /<\s*\/?\s*[a-z][^>]*>/i,
-      /javascript:/i,
-      /data:\s*text\/html/i,
-      /on[a-z]+\s*=/i,
-    ];
-
-    const setStatus = (text, type) => {
-      statusEl.textContent = text;
-      statusEl.className = type ? 'status ' + type : 'status';
-    };
-
-    const normalizeMessage = (value) => {
-      return String(value || '')
-        .replace(/\r\n/g, '\n')
-        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
-    };
-
-    const sanitizeMessage = (value) => {
-      return normalizeMessage(value).slice(0, MAX_MESSAGE_LENGTH);
-    };
-
-    const hasDisallowedContent = (value) => {
-      return disallowedMessagePatterns.some((pattern) => pattern.test(value));
-    };
-
-    const fitInsertedTextToLimit = (currentValue, selectionStart, selectionEnd, insertedText) => {
-      const currentLength = currentValue.length;
-      const selectedLength = Math.max(0, selectionEnd - selectionStart);
-      const available = MAX_MESSAGE_LENGTH - (currentLength - selectedLength);
-      return insertedText.slice(0, Math.max(0, available));
-    };
-
-    const updateMessageCounter = () => {
-      const used = messageInput.value.length;
-      const remaining = MAX_MESSAGE_LENGTH - used;
-      messageCounterEl.textContent = remaining + ' characters remaining';
-      messageCounterEl.classList.toggle('limit-reached', remaining === 0);
-    };
-
-    messageInput.addEventListener('input', () => {
-      const rawValue = messageInput.value;
-      const sanitized = sanitizeMessage(rawValue);
-      if (sanitized !== rawValue) {
-        messageInput.value = sanitized;
-        setStatus('Message is limited to 2000 characters.', 'error');
-      }
-      updateMessageCounter();
-    });
-
-    messageInput.addEventListener('paste', (event) => {
-      event.preventDefault();
-
-      const pastedText = event.clipboardData?.getData('text/plain')
-        || window.clipboardData?.getData('Text')
-        || '';
-      if (!pastedText) {
-        return;
-      }
-
-      const selectionStart = messageInput.selectionStart ?? messageInput.value.length;
-      const selectionEnd = messageInput.selectionEnd ?? messageInput.value.length;
-      const normalizedPaste = normalizeMessage(pastedText);
-
-      if (hasDisallowedContent(normalizedPaste)) {
-        setStatus('Only plain text is allowed in the message.', 'error');
-        return;
-      }
-
-      const allowedPaste = fitInsertedTextToLimit(
-        messageInput.value,
-        selectionStart,
-        selectionEnd,
-        normalizedPaste
-      );
-
-      const nextValue = messageInput.value.slice(0, selectionStart)
-        + allowedPaste
-        + messageInput.value.slice(selectionEnd);
-      messageInput.value = sanitizeMessage(nextValue);
-      updateMessageCounter();
-
-      const cursorPosition = selectionStart + allowedPaste.length;
-      messageInput.setSelectionRange(cursorPosition, cursorPosition);
-
-      if (allowedPaste.length < normalizedPaste.length) {
-        setStatus('Message is limited to 2000 characters.', 'error');
-      }
-    });
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const senderEmail = senderEmailInput.value.trim().toLowerCase();
-      if (!senderEmail) {
-        setStatus('Email is required.', 'error');
-        return;
-      }
-      if (!emailRegex.test(senderEmail)) {
-        setStatus('Please enter a valid email address.', 'error');
-        return;
-      }
-
-      const message = sanitizeMessage(messageInput.value).trim();
-      if (!message) {
-        setStatus('Message is required.', 'error');
-        return;
-      }
-      if (message.length > MAX_MESSAGE_LENGTH) {
-        setStatus('Message is limited to 2000 characters.', 'error');
-        return;
-      }
-      if (hasDisallowedContent(message)) {
-        setStatus('Only plain text is allowed in the message.', 'error');
-        return;
-      }
-
-      messageInput.value = message;
-      updateMessageCounter();
-
-      submitButton.disabled = true;
-      setStatus('Sending...', '');
-
-      try {
-        await window.supportService.createSupportMessage({
-          senderEmail,
-          message,
-          source: 'happynuggetshome',
-        });
-
-        senderEmailInput.value = '';
-        messageInput.value = '';
-        updateMessageCounter();
-        setStatus('Message sent successfully.', 'success');
-      } catch (error) {
-        const apiError = error?.response?.data?.error;
-        setStatus(apiError || 'Failed to send message.', 'error');
-      } finally {
-        submitButton.disabled = false;
-      }
-    });
-
-    updateMessageCounter();
-  </script>
+  <footer class="site-footer">
+    <span>© 2026 LivyTech. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="./nuggets/#privacy">Nuggets Privacy</a>
+      <a href="./smilefit/#privacy">SmileFit Privacy</a>
+    </div>
+  </footer>
 </body>
 </html>
