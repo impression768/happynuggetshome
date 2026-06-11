@@ -27,7 +27,7 @@ export function HomePage() {
         <section className="overflow-hidden">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20">
             <div>
-              <p className={`${sticker} -rotate-2 bg-sun`}>Independent app studio</p>
+              <p className={`${sticker} -rotate-2 bg-sun`}>App and AI agents studio</p>
               <h1 className="mt-6 font-display text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
                 <span className="block">LIVY</span>
                 <span className="block text-outline">TECH</span>
