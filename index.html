@@ -1,92 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="48x48" href="./favicon.png">
-  <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+  <meta name="description" content="LivyTech is an independent app studio building Nuggets and SmileFit — small, focused mobile tools for learning and wellness." />
   <title>LivyTech | Home</title>
 </head>
-<body class="home-page">
-  <header class="site-header">
-    <a class="logo-link" href="./" aria-label="LivyTech home">
-      <img src="./livy-logo-tp.png" alt="LivyTech logo">
-      <span class="logo-text">LivyTech</span>
-    </a>
-    <nav class="site-nav" aria-label="Main navigation">
-      <a class="nav-link" href="#products">Products</a>
-      <a class="nav-link" href="./nuggets/">Nuggets</a>
-      <a class="nav-link" href="./smilefit/">SmileFit</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Independent app studio</p>
-        <h1>LivyTech</h1>
-        <p class="lede">LivyTech builds focused mobile products for learning, wellness, and everyday routines. Our products are designed to stay simple, practical, and easy to return to.</p>
-        <div class="button-row">
-          <a class="button primary" href="./nuggets/">Nuggets</a>
-          <a class="button secondary" href="./smilefit/">SmileFit</a>
-        </div>
-      </div>
-
-      <aside class="brand-panel" aria-label="LivyTech product focus">
-        <img src="./livy-logo-tp.png" alt="">
-        <p>Small tools, clear support paths, and transparent product policies for each LivyTech app.</p>
-        <div class="brand-list">
-          <span>Nuggets</span>
-          <span>SmileFit</span>
-        </div>
-      </aside>
-    </section>
-
-    <section id="products" class="band">
-      <div class="section-inner">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Products</p>
-            <h2>Apps by LivyTech</h2>
-          </div>
-          <p>Each product page includes a short description, support email, terms, and privacy policy.</p>
-        </div>
-
-        <div class="product-grid">
-          <article class="product-card product-card-nuggets">
-            <div class="product-meta">
-              <span class="meta-pill">Language learning</span>
-            </div>
-            <h3>Nuggets</h3>
-            <p>Nuggets helps learners create, save, and review useful phrase cards for everyday language practice.</p>
-            <p class="support-line">Support: <a href="mailto:nuggets@livytech.space">nuggets@livytech.space</a></p>
-            <div class="button-row">
-              <a class="button primary" href="./nuggets/">Open Nuggets</a>
-            </div>
-          </article>
-
-          <article class="product-card product-card-smilefit">
-            <div class="product-meta">
-              <span class="meta-pill alt">Personal wellness</span>
-            </div>
-            <h3>SmileFit</h3>
-            <p>SmileFit offers short guided smile and facial exercise sessions for personal wellness routines.</p>
-            <p class="support-line">Support: <a href="mailto:smilfit@livytech.space">smilfit@livytech.space</a></p>
-            <div class="button-row">
-              <a class="button primary" href="./smilefit/">Open SmileFit</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <span>© 2026 LivyTech. All rights reserved.</span>
-    <div class="footer-links">
-      <a href="./nuggets/#privacy">Nuggets Privacy</a>
-      <a href="./smilefit/#privacy">SmileFit Privacy</a>
-    </div>
-  </footer>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/entry-home.tsx"></script>
 </body>
 </html>
