@@ -90,7 +90,7 @@ export const nuggetsTerms: LegalDocData = {
     },
     {
       heading: "14. Contact",
-      paragraphs: ["For Nuggets support or legal questions, email nuggets@livytech.space."],
+      paragraphs: ["For Nuggets support or legal questions, email support@livytech.space."],
     },
   ],
 };
@@ -158,7 +158,7 @@ export const nuggetsPrivacy: LegalDocData = {
     {
       heading: "9. Your Rights",
       paragraphs: [
-        "Depending on where you live, you may have rights to access, correct, delete, export, or object to certain processing of your personal data. To make a request, email nuggets@livytech.space. We may need to verify your identity before completing a request.",
+        "Depending on where you live, you may have rights to access, correct, delete, export, or object to certain processing of your personal data. To make a request, email support@livytech.space. We may need to verify your identity before completing a request.",
       ],
     },
     {
@@ -175,7 +175,7 @@ export const nuggetsPrivacy: LegalDocData = {
     },
     {
       heading: "12. Contact",
-      paragraphs: ["For privacy questions or requests, email nuggets@livytech.space."],
+      paragraphs: ["For privacy questions or requests, email support@livytech.space."],
     },
   ],
 };

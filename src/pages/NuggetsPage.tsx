@@ -31,7 +31,7 @@ export function NuggetsPage() {
                 <span className={`${pill} bg-jade text-cream`}>Phrase cards</span>
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="mailto:nuggets@livytech.space" className={`${button} bg-tangerine text-cream`}>
+                <a href="mailto:support@livytech.space" className={`${button} bg-tangerine text-cream`}>
                   Email support
                 </a>
                 <a href="#terms" className={`${button} bg-cream`}>
@@ -64,9 +64,9 @@ export function NuggetsPage() {
                 For support, account questions, deletion requests, or privacy requests, email{" "}
                 <a
                   className="font-semibold underline decoration-tangerine decoration-2 underline-offset-2"
-                  href="mailto:nuggets@livytech.space"
+                  href="mailto:support@livytech.space"
                 >
-                  nuggets@livytech.space
+                  support@livytech.space
                 </a>
                 .
               </p>

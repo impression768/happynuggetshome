@@ -31,7 +31,7 @@ export function SmileFitPage() {
                 <span className={`${pill} bg-rose text-cream`}>Guided sessions</span>
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="mailto:smilfit@livytech.space" className={`${button} bg-cobalt text-cream`}>
+                <a href="mailto:support@livytech.space" className={`${button} bg-cobalt text-cream`}>
                   Email support
                 </a>
                 <a href="#terms" className={`${button} bg-cream`}>
@@ -64,9 +64,9 @@ export function SmileFitPage() {
                 For support, account questions, deletion requests, or privacy requests, email{" "}
                 <a
                   className="font-semibold underline decoration-cobalt decoration-2 underline-offset-2"
-                  href="mailto:smilfit@livytech.space"
+                  href="mailto:support@livytech.space"
                 >
-                  smilfit@livytech.space
+                  support@livytech.space
                 </a>
                 .
               </p>
