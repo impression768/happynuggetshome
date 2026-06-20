@@ -1,3 +1,4 @@
+import { type FormEvent, useState } from "react";
 import { SmileFitArt } from "../art/SmileFitArt";
 import { LegalDoc } from "../components/LegalDoc";
 import { Marquee } from "../components/Marquee";
@@ -6,6 +7,36 @@ import { SiteHeader } from "../components/SiteHeader";
 import { smilefitPrivacy, smilefitTerms } from "../content/smilefitLegal";
 import { button, pill, sticker } from "../lib/ui";
 import { useHashScroll } from "../lib/useHashScroll";
+
+const FEEDBACK_ENDPOINT = "https://api.livytech.space/feedback";
+const WEB_INSTALLATION_ID_KEY = "smilefit-web-feedback-installation-id";
+
+function createWebInstallationId() {
+  if (typeof crypto.randomUUID === "function") {
+    return `sfw_${crypto.randomUUID()}`;
+  }
+
+  return `sfw_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 14)}`;
+}
+
+function getOrCreateWebInstallationId() {
+  if (typeof window === "undefined") {
+    return createWebInstallationId();
+  }
+
+  try {
+    const existingInstallationId = window.localStorage.getItem(WEB_INSTALLATION_ID_KEY);
+    if (existingInstallationId) {
+      return existingInstallationId;
+    }
+
+    const installationId = createWebInstallationId();
+    window.localStorage.setItem(WEB_INSTALLATION_ID_KEY, installationId);
+    return installationId;
+  } catch {
+    return createWebInstallationId();
+  }
+}
 
 export function SmileFitPage() {
   useHashScroll();
@@ -31,8 +62,8 @@ export function SmileFitPage() {
                 <span className={`${pill} bg-rose text-cream`}>Guided sessions</span>
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="mailto:support@livytech.space" className={`${button} bg-cobalt text-cream`}>
-                  Email support
+                <a href="#support" className={`${button} bg-cobalt text-cream`}>
+                  Send feedback
                 </a>
                 <a href="#terms" className={`${button} bg-cream`}>
                   Terms
@@ -50,8 +81,8 @@ export function SmileFitPage() {
 
         <Marquee items={["Smile", "Breathe", "Hold", "Release", "Repeat", "Glow", "Easy does it"]} />
 
-        <section className="border-b-2 border-ink bg-cream">
-          <div className="mx-auto grid max-w-6xl gap-6 px-6 py-14 md:grid-cols-3">
+        <section id="support" className="scroll-mt-20 border-b-2 border-ink bg-cream">
+          <div className="mx-auto grid max-w-6xl gap-6 px-6 py-14 lg:grid-cols-[0.85fr_1.3fr_0.85fr]">
             <div className="border-2 border-ink bg-paper p-6 shadow-hard-sm md:-rotate-1">
               <h2 className="font-display text-base">ABOUT</h2>
               <p className="mt-3 text-ink/80">
@@ -61,15 +92,9 @@ export function SmileFitPage() {
             <div className="border-2 border-ink bg-paper p-6 shadow-hard-sm">
               <h2 className="font-display text-base">SUPPORT</h2>
               <p className="mt-3 text-ink/80">
-                For support, account questions, deletion requests, or privacy requests, email{" "}
-                <a
-                  className="font-semibold underline decoration-cobalt decoration-2 underline-offset-2"
-                  href="mailto:support@livytech.space"
-                >
-                  support@livytech.space
-                </a>
-                .
+                Send SmileFit support questions, deletion requests, privacy requests, or product feedback here.
               </p>
+              <SmileFitFeedbackForm />
             </div>
             <div className="border-2 border-ink bg-paper p-6 shadow-hard-sm md:rotate-1">
               <h2 className="font-display text-base">LEGAL</h2>
@@ -102,5 +127,95 @@ export function SmileFitPage() {
       <SiteFooter />
       <div className="grain" aria-hidden="true" />
     </>
+  );
+}
+
+function SmileFitFeedbackForm() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const trimmedEmail = email.trim();
+  const trimmedMessage = message.trim();
+  const canSend = trimmedMessage.length > 0 && status !== "sending";
+
+  async function sendFeedback(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!canSend) {
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const response = await fetch(FEEDBACK_ENDPOINT, {
+        body: JSON.stringify({
+          app: "SmileFit",
+          email: trimmedEmail || null,
+          installationId: getOrCreateWebInstallationId(),
+          message: trimmedMessage,
+          platform: "web",
+          sentAt: new Date().toISOString(),
+          source: "smilefit_web_support",
+          topic: "web_feedback",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Feedback failed with ${response.status}`);
+      }
+
+      setEmail("");
+      setMessage("");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <form className="mt-5 space-y-4" onSubmit={(event) => void sendFeedback(event)}>
+      <label className="block">
+        <span className="text-xs font-bold uppercase tracking-wider text-ink/70">Email optional</span>
+        <input
+          className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 font-semibold outline-none shadow-hard-sm transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:shadow-hard"
+          inputMode="email"
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="you@example.com"
+          type="email"
+          value={email}
+        />
+      </label>
+      <label className="block">
+        <span className="text-xs font-bold uppercase tracking-wider text-ink/70">Message</span>
+        <textarea
+          className="mt-2 min-h-32 w-full resize-y border-2 border-ink bg-cream px-4 py-3 font-semibold leading-relaxed outline-none shadow-hard-sm transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:shadow-hard"
+          onChange={(event) => setMessage(event.target.value)}
+          placeholder="What should we improve?"
+          required
+          value={message}
+        />
+      </label>
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          className={`${button} bg-cobalt text-cream disabled:cursor-not-allowed disabled:opacity-50`}
+          disabled={!canSend}
+          type="submit"
+        >
+          {status === "sending" ? "Sending..." : "Send feedback"}
+        </button>
+        <p className="min-h-6 text-sm font-semibold text-ink/70" role="status">
+          {status === "sent"
+            ? "Sent. Thank you."
+            : status === "error"
+              ? "Could not send. Please try again."
+              : ""}
+        </p>
+      </div>
+    </form>
   );
 }

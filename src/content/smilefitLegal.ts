@@ -90,7 +90,7 @@ export const smilefitTerms: LegalDocData = {
     },
     {
       heading: "14. Contact",
-      paragraphs: ["For SmileFit support or legal questions, email support@livytech.space."],
+      paragraphs: ["For SmileFit support or legal questions, use the SmileFit feedback form on this site."],
     },
   ],
 };
@@ -108,7 +108,7 @@ export const smilefitPrivacy: LegalDocData = {
         "Routine progress, preferences, app settings, and content you create or submit.",
         "Device permission data needed for features you enable, such as camera or microphone access.",
         "Usage and diagnostic data, such as device type, operating system, app activity, error logs, IP address, and performance information.",
-        "Support information you send to us by email.",
+        "Support information you send through the SmileFit feedback form, including your message, optional email address, and a randomly generated web feedback installation ID.",
       ],
     },
     {
@@ -129,7 +129,7 @@ export const smilefitPrivacy: LegalDocData = {
     {
       heading: "4. Health and Sensitive Information",
       paragraphs: [
-        "SmileFit is a general wellness app and is not designed to collect medical records or diagnose conditions. Do not submit sensitive medical, dental, financial, government ID, or confidential information through the app or support email.",
+        "SmileFit is a general wellness app and is not designed to collect medical records or diagnose conditions. Do not submit sensitive medical, dental, financial, government ID, or confidential information through the app or support form.",
       ],
     },
     {
@@ -159,7 +159,7 @@ export const smilefitPrivacy: LegalDocData = {
     {
       heading: "9. Your Rights",
       paragraphs: [
-        "Depending on where you live, you may have rights to access, correct, delete, export, or object to certain processing of your personal data. To make a request, email support@livytech.space. We may need to verify your identity before completing a request.",
+        "Depending on where you live, you may have rights to access, correct, delete, export, or object to certain processing of your personal data. To make a request, use the SmileFit feedback form. We may need to verify your identity before completing a request.",
       ],
     },
     {
@@ -176,7 +176,7 @@ export const smilefitPrivacy: LegalDocData = {
     },
     {
       heading: "12. Contact",
-      paragraphs: ["For privacy questions or requests, email support@livytech.space."],
+      paragraphs: ["For privacy questions or requests, use the SmileFit feedback form on this site."],
     },
   ],
 };
