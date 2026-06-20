@@ -92,7 +92,15 @@ export function SmileFitPage() {
             <div className="border-2 border-ink bg-paper p-6 shadow-hard-sm">
               <h2 className="font-display text-base">SUPPORT</h2>
               <p className="mt-3 text-ink/80">
-                Send SmileFit support questions, deletion requests, privacy requests, or product feedback here.
+                Send SmileFit support questions, deletion requests, privacy requests, or product feedback here, or
+                email{" "}
+                <a
+                  className="font-semibold underline decoration-cobalt decoration-2 underline-offset-2"
+                  href="mailto:support@livytech.space"
+                >
+                  support@livytech.space
+                </a>
+                .
               </p>
               <SmileFitFeedbackForm />
             </div>

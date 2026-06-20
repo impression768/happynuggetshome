@@ -90,7 +90,9 @@ export const smilefitTerms: LegalDocData = {
     },
     {
       heading: "14. Contact",
-      paragraphs: ["For SmileFit support or legal questions, use the SmileFit feedback form on this site."],
+      paragraphs: [
+        "For SmileFit support or legal questions, use the SmileFit feedback form on this site or email support@livytech.space.",
+      ],
     },
   ],
 };
@@ -159,7 +161,7 @@ export const smilefitPrivacy: LegalDocData = {
     {
       heading: "9. Your Rights",
       paragraphs: [
-        "Depending on where you live, you may have rights to access, correct, delete, export, or object to certain processing of your personal data. To make a request, use the SmileFit feedback form. We may need to verify your identity before completing a request.",
+        "Depending on where you live, you may have rights to access, correct, delete, export, or object to certain processing of your personal data. To make a request, use the SmileFit feedback form or email support@livytech.space. We may need to verify your identity before completing a request.",
       ],
     },
     {
@@ -176,7 +178,9 @@ export const smilefitPrivacy: LegalDocData = {
     },
     {
       heading: "12. Contact",
-      paragraphs: ["For privacy questions or requests, use the SmileFit feedback form on this site."],
+      paragraphs: [
+        "For privacy questions or requests, use the SmileFit feedback form on this site or email support@livytech.space.",
+      ],
     },
   ],
 };
