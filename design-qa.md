@@ -114,4 +114,15 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Responsive and detail checks: desktop `1440×900`, mobile `390×844`, and `/projects/personalized-book/` load the complete `1200×1200` asset with no horizontal overflow. Browser diagnostics contain no warning or error entries for the implementation origin.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 PrimeTime conversation cover revision
+
+- User-requested change: remove the awkward phone-screen demonstration from the PTBN cover and show two people having a natural conversation, with one person only holding an iPhone as a secondary object.
+- Image correction: the built-in ImageGen model replaced the downward screen-review and pointing pose with direct eye contact, relaxed smiles, and conversational hand gestures. One foreground person holds the phone naturally with only its back visible; no screen, interface, colored blocks, or sales-demo behavior remains.
+- Preserved visual context: the same two foreground subjects, orange blouse, navy blazer, networking-event setting, softly blurred attendees, flowers, warm editorial lighting, square composition, and card-compatible central framing remain.
+- Final asset: `public/images/projects/ptbn.webp`, optimized to `1200×1200` WebP at `125,630` bytes. The existing generic community-event alt text remains accurate.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/ptbn-conversation-cover/`.
+- Combined comparisons: `comparison-desktop.jpg` and `comparison-mobile.jpg` use matched source/implementation viewports and scroll positions. Both confirm the direct eye contact is readable, the phone screen is absent, the device stays secondary, and existing card dimensions, typography, border, rotation, CTA, spacing, and adjacent cover remain unchanged.
+- Responsive and detail checks: desktop `1440×900`, mobile `390×844`, and `/projects/ptbn/` load the complete `1200×1200` asset with no horizontal overflow. Browser diagnostics contain no warning or error entries for the implementation origin.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
+
 final result: passed
