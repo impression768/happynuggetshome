@@ -67,4 +67,13 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Combined comparison result: the labeled desktop/mobile grid and detail composites place the source and implementation in one input at the same viewport and state. They confirm that the requested imagery is the only material visual change and that the preserved LivyTech poster-art system still frames the new photography coherently.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 hero-glasses removal
+
+- User decision: the Lemtosh-inspired glasses were removed from the small abstract hero face. The two cobalt eyes, green triangle, rose smile, surrounding shapes, and existing motion remain unchanged.
+- Implementation: removed only the glasses-frame group from `src/art/HeroComposition.tsx` and updated the SVG accessible label from `smiling face with glasses` to `smiling face`.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/hero-glasses-removal/`.
+- Combined comparisons: `comparison-desktop.jpg` uses matched `1440×900` before/after captures; `comparison-mobile.jpg` uses matched `390×844` captures scrolled to the face. Both confirm that the frame is gone without altering the face placement, SVG composition, hero layout, navigation, CTA hierarchy, marquee, or project-section reveal.
+- Responsive and accessibility checks: both viewports reported `documentElement.scrollWidth === innerWidth`; the hero SVG exposes the updated label; browser diagnostics contained no warnings or errors for the implementation origin.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
+
 final result: passed
