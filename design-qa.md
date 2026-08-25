@@ -86,4 +86,14 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Detail-page and responsive checks: `/projects/ptbn/` loads the complete `1200×1200` image and existing descriptive alt text. Desktop and `390×844` mobile checks reported `documentElement.scrollWidth === innerWidth`, and browser diagnostics contained no warnings or errors for the implementation origin.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 Personalized Book Platform cover correction
+
+- User-reported issues: the original scene did not match the requested European family representation, and the printed illustrations faced the camera rather than the readers, making the physical book orientation feel inverted for the father and child.
+- Image correction: the built-in ImageGen model was used in two edit passes. The first replaced the subjects with a European father and young child, aligned both eye lines with the open book, and oriented the printed pages upright from the readers' side (therefore upside-down from the camera's opposing viewpoint). The second extended the accepted scene to a true square master while preserving the reader-correct central composition, warm kitchen, tablet thumbnails, print proofs, and natural hands.
+- Final asset: `public/images/projects/personalized-book.webp`, optimized to `1200×1200` WebP at `145,778` bytes.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/personalized-book-cover-fix/`.
+- Combined comparisons: `comparison-card-desktop.jpg` and `comparison-card-mobile.jpg` use matched source/implementation viewports and scroll positions. The new central crop keeps the father and child visibly engaged with the same correctly oriented book while retaining the tablet and print proofs that communicate the personalized-commerce workflow. Existing card dimensions, border, rotation, typography, copy, CTA, grid spacing, and adjacent covers remain unchanged.
+- Detail-page and responsive checks: `/projects/personalized-book/` loads the complete `1200×1200` image and existing descriptive alt text. Desktop `1440×900` and mobile `390×844` checks reported `documentElement.scrollWidth === innerWidth`, and browser diagnostics contained no warnings or errors for the implementation origin.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
+
 final result: passed
