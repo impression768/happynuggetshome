@@ -76,4 +76,14 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Responsive and accessibility checks: both viewports reported `documentElement.scrollWidth === innerWidth`; the hero SVG exposes the updated label; browser diagnostics contained no warnings or errors for the implementation origin.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 PrimeTime Business Network cover correction
+
+- User-reported issue: the original card crop placed the phone awkwardly near the lower edge and did not make the two foreground eye lines read as one shared interaction.
+- Image correction: built-in ImageGen regenerated the foreground phone exchange while preserving the professional networking event, people, clothing, warm editorial lighting, softly defocused attendees, floral detail, square framing, and non-readable abstract screen. A focused second pass moved the complete phone and connected hands higher into the center crop band.
+- Final asset: `public/images/projects/ptbn.webp`, optimized to `1200×1200` WebP at `122,872` bytes.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/ptbn-cover-fix/`.
+- Combined comparisons: `comparison-card-desktop.jpg` and `comparison-card-mobile.jpg` use matched source/implementation viewports and scroll positions. The revised crop keeps the complete upright phone between the two people, gives both faces a clear downward eye line to the same screen, and preserves the existing card dimensions, border, rotation, typography, copy, CTA, grid spacing, and adjacent covers.
+- Detail-page and responsive checks: `/projects/ptbn/` loads the complete `1200×1200` image and existing descriptive alt text. Desktop and `390×844` mobile checks reported `documentElement.scrollWidth === innerWidth`, and browser diagnostics contained no warnings or errors for the implementation origin.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
+
 final result: passed
