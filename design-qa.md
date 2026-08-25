@@ -125,4 +125,14 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Responsive and detail checks: desktop `1440×900`, mobile `390×844`, and `/projects/ptbn/` load the complete `1200×1200` asset with no horizontal overflow. Browser diagnostics contain no warning or error entries for the implementation origin.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 art-wall attribution cleanup
+
+- User-requested copy change: changed the wall heading from `ABSTRACTIONS WE LIVE WITH` to `ABSTRACTIONS I LIVE WITH` and removed the invented study titles, `SVG on paper`, and portfolio creation year `2026` from the visible artwork captions.
+- Researched source dates: Sean Scully's *Backs and Fronts* — `1981` (Philadelphia Museum of Art); Katharina Grosse's *Untitled* — `2016` (Gagosian); Julie Mehretu's *Stadia II* — `2004` (Whitney Museum wall labels for the Carnegie Museum of Art work); Bridget Riley's *Cataract 3* — `1967` (British art catalogue and British Council Collection).
+- Visible caption result: `Sean Scully · 1981`, `Katharina Grosse · 2016`, `Julie Mehretu · 2004`, and `Bridget Riley · 1967`. Each figure's accessible label retains `Study after`, the artist, referenced work title, and year so the provenance remains honest and traceable without adding visual clutter.
+- Shared-component consistency: the active portfolio and older shared `HomePage` consumer use the same researched metadata; repository search confirms no `SVG on paper`, art-wall `2026`, or `WE LIVE WITH` remains in those paths.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/art-wall-captions/`.
+- Combined comparisons: `comparison-desktop.jpg` and `comparison-mobile.jpg` use matched source/implementation viewports and scroll positions. They confirm the singular heading, compact single-line captions, unchanged paintings/frame treatment, clean responsive wrapping, and no horizontal overflow.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. Browser diagnostics contain no warning or error entries for the implementation origin. No actionable P0, P1, or P2 findings remain.
+
 final result: passed

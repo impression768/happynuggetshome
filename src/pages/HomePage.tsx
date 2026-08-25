@@ -13,10 +13,10 @@ import { SiteHeader } from "../components/SiteHeader";
 import { button, sticker } from "../lib/ui";
 
 const WALL = [
-  { title: "Stacked Weather", after: "Sean Scully", rotate: "rotate-[-1.25deg]", Art: ScullyBlocks },
-  { title: "Loud Bloom", after: "Katharina Grosse", rotate: "rotate-[1deg]", Art: SprayBloom },
-  { title: "City Score", after: "Julie Mehretu", rotate: "rotate-[-0.75deg]", Art: LineScore },
-  { title: "Current No. 2", after: "Bridget Riley", rotate: "rotate-[1.25deg]", Art: RileyWaves },
+  { artist: "Sean Scully", sourceTitle: "Backs and Fronts", year: "1981", rotate: "rotate-[-1.25deg]", Art: ScullyBlocks },
+  { artist: "Katharina Grosse", sourceTitle: "Untitled", year: "2016", rotate: "rotate-[1deg]", Art: SprayBloom },
+  { artist: "Julie Mehretu", sourceTitle: "Stadia II", year: "2004", rotate: "rotate-[-0.75deg]", Art: LineScore },
+  { artist: "Bridget Riley", sourceTitle: "Cataract 3", year: "1967", rotate: "rotate-[1.25deg]", Art: RileyWaves },
 ];
 
 export function HomePage() {
@@ -100,18 +100,17 @@ export function HomePage() {
               <div>
                 <p className={`${sticker} -rotate-1 bg-jade text-cream`}>The studio wall</p>
                 <h2 className="mt-4 font-display text-3xl sm:text-4xl">
-                  ABSTRACTIONS <span className="text-outline-paper">WE LIVE WITH</span>
+                  ABSTRACTIONS <span className="text-outline-paper">I LIVE WITH</span>
                 </h2>
               </div>
               <p className="max-w-sm text-paper/70">
-                Four studies in color we keep around the studio — small homages to the abstract painters we look at
-                while we build.
+                Four studies in color—small homages to the abstract painters I return to while I build.
               </p>
             </div>
 
             <div className="mt-10 grid gap-6 text-ink sm:grid-cols-2 lg:grid-cols-4">
-              {WALL.map(({ title, after, rotate, Art }) => (
-                <ArtFrame key={title} title={title} after={after} rotate={rotate}>
+              {WALL.map(({ artist, sourceTitle, year, rotate, Art }) => (
+                <ArtFrame key={`${artist}-${year}`} artist={artist} sourceTitle={sourceTitle} year={year} rotate={rotate}>
                   <Art className="block h-auto w-full" />
                 </ArtFrame>
               ))}
