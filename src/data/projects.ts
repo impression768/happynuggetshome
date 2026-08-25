@@ -1,6 +1,7 @@
 export type Project = {
   id: string;
   title: string;
+  coverAlt: string;
   context: string;
   summary: string;
   contribution: string;
@@ -16,6 +17,7 @@ export const projects: Project[] = [
   {
     id: "geniehr",
     title: "GenieHR",
+    coverAlt: "Editorial representation of a hiring team reviewing candidate information together",
     context: "AI-powered hiring and HR platform",
     summary: "End-to-end hiring and HR product covering recruiter workflows, applicant journeys, assessment, scheduling, references, offers, contracts, employee operations, training, payments, and company administration.",
     contribution: "Lead developer and full-stack implementation across state-heavy React experiences, Node.js services, MongoDB models, permissions, communications, integrations, and production AI workflows.",
@@ -38,6 +40,7 @@ export const projects: Project[] = [
   {
     id: "insight-genie",
     title: "Insight Genie",
+    coverAlt: "Editorial representation of a professional reviewing voice and assessment insights",
     context: "Assessment and analytics platform",
     summary: "Customer-facing platform combining non-contact face-scan workflows, voice and customer-call analysis, protected client APIs, institutional management, dashboards, and structured reporting.",
     contribution: "Built and evolved major frontend and backend product areas, including assessment journeys, dashboards, protected processing, media ingestion, reporting, authentication, storage, and operational administration.",
@@ -59,6 +62,7 @@ export const projects: Project[] = [
   {
     id: "aded",
     title: "ADED",
+    coverAlt: "Editorial representation of a person preparing a second-hand item for a social marketplace listing",
     context: "AI-assisted social marketplace",
     summary: "Full-stack social marketplace built around a simple user flow: create an advertisement from a photo or text and make it discoverable across languages.",
     contribution: "Built marketplace workflows across React, Node.js, Express, MongoDB, identity, media, search, real-time messaging, seller tools, social features, and moderation operations.",
@@ -80,6 +84,7 @@ export const projects: Project[] = [
   {
     id: "voice-insight",
     title: "Voice Insight",
+    coverAlt: "Editorial representation of a call-analysis workflow with a headset and audio notes",
     context: "Audio-intelligence backend",
     summary: "Backend and AI-processing pipeline that turns raw customer-call recordings into validated, structured, analysis-ready inputs for downstream voice analysis.",
     contribution: "Owned the Node.js orchestration layer, service contracts, request flow, validation, preprocessing, traceability, protected access, packaging, and multi-service deployment.",
@@ -99,6 +104,7 @@ export const projects: Project[] = [
   {
     id: "nagi",
     title: "NAGI",
+    coverAlt: "Editorial representation of a person using a calm non-contact wellbeing check-in",
     context: "Non-contact wellbeing platform",
     summary: "Web product combining non-contact face-scan measurement, personal baselines, visual condition summaries, guidance, history, and organization-level management without positioning itself as medical diagnosis.",
     contribution: "Built authenticated consumer journeys, face-scan integration, baseline-aware result flows, dashboards, history, exports, and organization-manager capabilities connected to Insight Genie APIs.",
@@ -118,6 +124,7 @@ export const projects: Project[] = [
   {
     id: "data-collection",
     title: "Data Collection",
+    coverAlt: "Editorial representation of a reviewer organizing labeled voice-recording samples",
     context: "Labeled voice dataset operations",
     summary: "Internal full-stack platform for collecting, reviewing, enriching, moderating, curating, and exporting labeled voice samples for AI, analytics, and research workflows.",
     contribution: "Built reviewer and administrator workflows across the React interface, Node.js API, MongoDB data operations, S3 media storage, reporting, bulk ingestion, and AI-assisted enrichment.",
@@ -137,6 +144,7 @@ export const projects: Project[] = [
   {
     id: "ptbn",
     title: "PrimeTime Business Network",
+    coverAlt: "Editorial representation of business-network members connecting at a community event",
     context: "Mobile-first business networking",
     summary: "Coordinated member mobile app, Node.js backend, and React admin panel for a U.S.-based business network.",
     contribution: "Built member-facing mobile journeys, backend business rules, internal operations tooling, and integrations for identity, billing, files, email, and mobile notifications.",
@@ -156,6 +164,7 @@ export const projects: Project[] = [
   {
     id: "personalized-book",
     title: "Personalized Book Platform",
+    coverAlt: "Editorial representation of a parent and child exploring a personalized picture book and print proofs",
     context: "Personalized commerce and print workflow",
     summary: "Multilingual children’s-book platform connecting storefront UX, guided personalization, payments, generated media, PDF production, and printing-house operations.",
     contribution: "Worked across the Next.js storefront, resumable personalization, checkout and order lifecycle, backend route handlers, media generation, print-ready assets, storage, and internal operations.",
@@ -175,6 +184,7 @@ export const projects: Project[] = [
   {
     id: "smilefit",
     title: "SmileFit",
+    coverAlt: "Editorial representation of a private daily smile-practice session with a smartphone",
     context: "Camera-assisted daily practice",
     summary: "Local-first mobile app for short daily smile-practice sessions, progress awareness, streaks, education, and reminders; framed as wellbeing practice rather than diagnosis.",
     contribution: "Built the Expo application, camera-based practice gating, local persistence, reminders, feedback capture, device/release behavior, legal content, and Cloudflare feedback service.",
@@ -194,6 +204,7 @@ export const projects: Project[] = [
   {
     id: "nuggets",
     title: "Nuggets",
+    coverAlt: "Editorial representation of practical language practice during a café conversation",
     context: "AI-assisted language learning",
     summary: "Mobile app that turns a phrase into translation, learner-friendly pronunciation guidance, word-level meaning, saved practice content, and recurring vocabulary exposure.",
     contribution: "Built the Expo application and Express API across identity, phrase processing, history, target-language preferences, feedback, widget content, structured AI outputs, and background synchronization.",

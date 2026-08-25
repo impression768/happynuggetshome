@@ -1,9 +1,7 @@
 import { HeroComposition } from "../art/HeroComposition";
 import { LineScore } from "../art/LineScore";
-import { NuggetsArt } from "../art/NuggetsArt";
 import { RileyWaves } from "../art/RileyWaves";
 import { ScullyBlocks } from "../art/ScullyBlocks";
-import { SmileFitArt } from "../art/SmileFitArt";
 import { SprayBloom } from "../art/SprayBloom";
 import { ArtFrame } from "../components/ArtFrame";
 import { Marquee } from "../components/Marquee";
@@ -19,7 +17,6 @@ const WALL = [
   { title: "City Score", after: "Julie Mehretu", rotate: "rotate-[-0.75deg]", Art: LineScore },
   { title: "Current No. 2", after: "Bridget Riley", rotate: "rotate-[1.25deg]", Art: RileyWaves },
 ];
-const PROJECT_ART = [HeroComposition, NuggetsArt, SmileFitArt, LineScore, SprayBloom, ScullyBlocks, RileyWaves];
 const CARD_COLORS = ["bg-tangerine text-cream", "bg-cobalt text-cream", "bg-jade text-cream", "bg-rose text-cream", "bg-lilac text-cream"];
 const CARD_ROTATIONS = ["md:-rotate-1", "md:rotate-1", "md:rotate-[0.5deg]", "md:-rotate-[0.5deg]"];
 
@@ -40,7 +37,7 @@ export function PortfolioHomePage() {
         <Marquee items={["Applied AI", "Product systems", "Web", "Mobile", "Backend", "Integrations", "Validation", "Human control"]} />
 
         <section id="projects" className="scroll-mt-20 border-b-2 border-ink bg-cream"><div className="mx-auto max-w-6xl px-6 py-16 sm:py-20"><div className="flex flex-wrap items-end justify-between gap-6"><div><p className={`${sticker} rotate-1 bg-rose text-cream`}>Selected work</p><h2 className="mt-4 font-display text-3xl sm:text-4xl">PROJECTS</h2></div><p className="max-w-sm text-ink/70">Ten public project records—from product workflow and AI integration through web, mobile, backend, and operational tooling.</p></div>
-          <div className="mt-10 grid gap-8 md:grid-cols-2">{projects.map((project, index) => { const Art = PROJECT_ART[index % PROJECT_ART.length]; return <ProductCard key={project.id} title={project.title} href={`/projects/${project.id}/`} art={<Art className="h-full w-full" />} context={project.context} description={project.summary} ctaClass={CARD_COLORS[index % CARD_COLORS.length]} rotate={CARD_ROTATIONS[index % CARD_ROTATIONS.length]} />; })}</div>
+          <div className="mt-10 grid gap-8 md:grid-cols-2">{projects.map((project, index) => <ProductCard key={project.id} title={project.title} href={`/projects/${project.id}/`} imageSrc={`/images/projects/${project.id}.webp`} imageAlt={project.coverAlt} imageLoading={index < 2 ? "eager" : "lazy"} context={project.context} description={project.summary} ctaClass={CARD_COLORS[index % CARD_COLORS.length]} rotate={CARD_ROTATIONS[index % CARD_ROTATIONS.length]} />)}</div>
         </div></section>
 
         <section id="about" className="scroll-mt-20 border-b-2 border-ink bg-paper"><div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 sm:py-20 lg:grid-cols-[0.7fr_1.3fr]"><div><p className={`${sticker} -rotate-1 bg-jade text-cream`}>About</p><h2 className="mt-5 font-display text-3xl sm:text-4xl">ABOUT</h2></div><div className="border-2 border-ink bg-cream p-6 shadow-hard sm:p-8"><p className="text-lg leading-relaxed text-ink/85">Tech evolves dynamically. The responsibility stays the same: understand the real problem, turn it into a product people can trust, and own the outcome.</p><p className="mt-5 leading-relaxed text-ink/75">Over 5+ years across web, mobile, backend, cloud, and integrations, I have developed a product-first, systems-oriented approach: start with users and the workflow, understand how the parts affect one another, choose the simplest architecture that can grow, ship, observe real behavior, and keep improving.</p><p className="mt-5 leading-relaxed text-ink/75">Applied AI is the direction that matters most now—transforming real business processes into reliable pipelines and products where models work alongside data, deterministic logic, tools, integrations, validation, recovery, observation, and human control. Architecture, security, reliability, and outcomes remain human responsibilities.</p><p className="mt-5 leading-relaxed text-ink/75">AI orchestration feels less like using a single tool and more like conducting an ensemble: agents, models, tools, data, and deterministic software, each doing the work it is best suited to do. The creative work is shaping them into a real flow and one coherent result—knowing which question to ask, how to break the problem into the right sequence of questions and steps, and when to challenge the answer.</p><p className="mt-5 font-semibold leading-relaxed text-ink/85">Understand deeply. Build pragmatically. Learn quickly. Own the result.</p></div></div></section>

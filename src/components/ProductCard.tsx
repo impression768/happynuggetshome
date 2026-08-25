@@ -5,6 +5,9 @@ export function ProductCard({
   title,
   href,
   art,
+  imageSrc,
+  imageAlt,
+  imageLoading = "lazy",
   context,
   description,
   cta = "View project",
@@ -13,7 +16,10 @@ export function ProductCard({
 }: {
   title: string;
   href: string;
-  art: ReactNode;
+  art?: ReactNode;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageLoading?: "eager" | "lazy";
   context: string;
   description: string;
   cta?: string;
@@ -24,8 +30,16 @@ export function ProductCard({
     <article
       className={`flex flex-col border-2 border-ink bg-cream shadow-hard transition-transform duration-200 hover:rotate-0 ${rotate}`}
     >
-      <a href={href} className="block h-44 overflow-hidden border-b-2 border-ink" tabIndex={-1} aria-hidden="true">
-        {art}
+      <a href={href} className="block h-44 overflow-hidden border-b-2 border-ink">
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={imageAlt || ""}
+            className="h-full w-full object-cover"
+            loading={imageLoading}
+            decoding="async"
+          />
+        ) : art}
       </a>
       <div className="flex grow flex-col gap-3 p-6">
         <span className={`${pill} w-fit bg-sun`}>{context}</span>
