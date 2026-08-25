@@ -5,20 +5,18 @@ export function ProductCard({
   title,
   href,
   art,
-  pills,
+  context,
   description,
-  supportEmail,
-  cta,
+  cta = "View project",
   ctaClass,
   rotate,
 }: {
   title: string;
   href: string;
   art: ReactNode;
-  pills: { label: string; className: string }[];
+  context: string;
   description: string;
-  supportEmail: string;
-  cta: string;
+  cta?: string;
   ctaClass: string;
   rotate: string;
 }) {
@@ -30,21 +28,9 @@ export function ProductCard({
         {art}
       </a>
       <div className="flex grow flex-col gap-3 p-6">
-        <div className="flex flex-wrap gap-2">
-          {pills.map((p) => (
-            <span key={p.label} className={`${pill} ${p.className}`}>
-              {p.label}
-            </span>
-          ))}
-        </div>
+        <span className={`${pill} w-fit bg-sun`}>{context}</span>
         <h3 className="font-display text-2xl">{title}</h3>
         <p className="text-ink/80">{description}</p>
-        <p className="text-sm">
-          Support:{" "}
-          <a className="font-semibold underline decoration-2 underline-offset-2" href={`mailto:${supportEmail}`}>
-            {supportEmail}
-          </a>
-        </p>
         <div className="mt-auto pt-2">
           <a href={href} className={`${button} ${ctaClass}`}>
             {cta}

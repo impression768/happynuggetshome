@@ -1,15 +1,17 @@
-# LivyTech site
+# Eugene Livschitz portfolio
 
-Marketing + legal site for LivyTech apps (Nuggets, SmileFit), served at https://livytech.space.
+Hiring portfolio for Eugene Livschitz, Applied AI / Product Engineer in Tel Aviv.
 
 React 19 + TypeScript + Vite 7 + Tailwind CSS 4, built as a multi-page app so
-`/`, `/nuggets/`, `/smilefit/`, and `/privacy/` are real static pages on GitHub Pages
-(no SPA routing hacks — deep links and `#terms` / `#privacy` anchors always work).
+the home page, all `/projects/<id>/` detail pages, and legacy `/nuggets/`,
+`/smilefit/`, and `/privacy/` policy routes are real static pages on GitHub Pages.
+Project content is shared typed data in `src/data/projects.ts`; no project detail
+route relies on an SPA fallback.
 
 ## Develop
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
@@ -19,8 +21,7 @@ npm run dev
 npm run build   # type-checks, then outputs static site to dist/
 ```
 
-## Deploy
+## Hosting
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which builds and publishes
-`dist/` to GitHub Pages. The repo's Pages settings must use **Source: GitHub Actions**.
-The custom-domain `CNAME` file lives in `public/` so it lands in every build.
+The build outputs `dist/` for GitHub Pages. `public/CNAME` remains `livytech.space`
+for the existing custom domain. This repository does not deploy as part of local development.

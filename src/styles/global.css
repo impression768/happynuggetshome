@@ -54,6 +54,11 @@
   }
   body {
     @apply bg-paper font-body text-ink antialiased;
+    overflow-x: hidden;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-cobalt);
+    outline-offset: 3px;
   }
   ::selection {
     background: var(--color-sun);

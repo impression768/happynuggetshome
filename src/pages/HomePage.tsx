@@ -74,9 +74,8 @@ export function HomePage() {
                 title="NUGGETS"
                 href="/nuggets/"
                 art={<NuggetsArt className="h-full w-full" />}
-                pills={[{ label: "Language learning", className: "bg-sun" }]}
+                context="Language learning"
                 description="Create, save, and review useful phrase cards for everyday language practice."
-                supportEmail="support@livytech.space"
                 cta="Open Nuggets"
                 ctaClass="bg-tangerine text-cream"
                 rotate="md:-rotate-1"
@@ -85,9 +84,8 @@ export function HomePage() {
                 title="SMILEFIT"
                 href="/smilefit/"
                 art={<SmileFitArt className="h-full w-full" />}
-                pills={[{ label: "Personal wellness", className: "bg-sky" }]}
+                context="Personal wellness"
                 description="Short guided smile and facial exercise sessions for personal wellness routines."
-                supportEmail="support@livytech.space"
                 cta="Open SmileFit"
                 ctaClass="bg-cobalt text-cream"
                 rotate="md:rotate-1"

@@ -12,7 +12,7 @@ export function NuggetsPage() {
 
   return (
     <>
-      <SiteHeader current="nuggets" />
+      <SiteHeader />
       <main>
         <section className="overflow-hidden">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20">
