@@ -1,10 +1,10 @@
 import { HeroComposition } from "../art/HeroComposition";
-import { LineScore } from "../art/LineScore";
+import { AgamKinetics } from "../art/AgamKinetics";
+import { NikelGesture } from "../art/NikelGesture";
 import { NuggetsArt } from "../art/NuggetsArt";
 import { RileyWaves } from "../art/RileyWaves";
 import { ScullyBlocks } from "../art/ScullyBlocks";
 import { SmileFitArt } from "../art/SmileFitArt";
-import { SprayBloom } from "../art/SprayBloom";
 import { ArtFrame } from "../components/ArtFrame";
 import { Marquee } from "../components/Marquee";
 import { ProductCard } from "../components/ProductCard";
@@ -14,8 +14,8 @@ import { button, sticker } from "../lib/ui";
 
 const WALL = [
   { artist: "Sean Scully", sourceTitle: "Backs and Fronts", year: "1981", rotate: "rotate-[-1.25deg]", Art: ScullyBlocks },
-  { artist: "Katharina Grosse", sourceTitle: "Untitled", year: "2016", rotate: "rotate-[1deg]", Art: SprayBloom },
-  { artist: "Julie Mehretu", sourceTitle: "Stadia II", year: "2004", rotate: "rotate-[-0.75deg]", Art: LineScore },
+  { artist: "Yaacov Agam", sourceTitle: "Double Metamorphosis, II", year: "1964", rotate: "rotate-[1deg]", Art: AgamKinetics },
+  { artist: "Lea Nikel", sourceTitle: "Untitled", year: "1986", rotate: "rotate-[-0.75deg]", Art: NikelGesture },
   { artist: "Bridget Riley", sourceTitle: "Cataract 3", year: "1967", rotate: "rotate-[1.25deg]", Art: RileyWaves },
 ];
 
