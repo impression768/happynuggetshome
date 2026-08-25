@@ -31,7 +31,7 @@ export function PortfolioHomePage() {
           <h1 className="mt-6 font-display text-5xl leading-[0.95] sm:text-6xl lg:text-7xl"><span className="block">EUGENE</span><span className="block text-outline">LIVSCHITZ</span></h1>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/80">I turn real business processes into reliable AI pipelines and products—and own the path from workflow discovery to production.</p>
           <p className="mt-4 max-w-md leading-relaxed text-ink/70">Full-stack product engineering is my foundation. I use frontier models, deterministic logic, integrations, validation, recovery, and human control to make practical systems dependable.</p>
-          <div className="mt-8 flex flex-wrap gap-4"><a href="#projects" className={`${button} bg-tangerine text-cream`}>Selected projects</a><a href="#contact" className={`${button} bg-cream`}>Contact</a></div>
+          <div className="mt-8 flex flex-wrap gap-4"><a href="#projects" className={`${button} bg-tangerine text-cream`}>Selected projects</a><a href="#about" className={`${button} bg-cobalt text-cream`}>About</a><a href="#contact" className={`${button} bg-cream`}>Contact</a></div>
         </div><HeroComposition className="mx-auto w-full max-w-md lg:max-w-none" /></div></section>
 
         <Marquee items={["Applied AI", "Product systems", "Web", "Mobile", "Backend", "Integrations", "Validation", "Human control"]} />

@@ -96,4 +96,12 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Detail-page and responsive checks: `/projects/personalized-book/` loads the complete `1200×1200` image and existing descriptive alt text. Desktop `1440×900` and mobile `390×844` checks reported `documentElement.scrollWidth === innerWidth`, and browser diagnostics contained no warnings or errors for the implementation origin.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 hero About CTA
+
+- Implementation: added an `About` link between the existing `Selected projects` and `Contact` hero CTAs. It targets the existing `#about` section and reuses the established button component, hard border and shadow, typography, and cobalt palette token.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/hero-about-button/`.
+- Desktop check: `desktop-1440x900.png` confirms all three CTAs remain on one row, preserve the hero's existing hierarchy and spacing, and introduce no horizontal overflow.
+- Mobile checks: `mobile-390x844.png` confirms the buttons wrap into a clear two-row layout without clipping or horizontal overflow. `mobile-about-target-390x844.png` confirms the CTA updates the URL to `#about` and leaves the About section approximately `80px` below the viewport top, clear of the fixed header.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. Browser diagnostics contained no warning or error entries for the implementation origin. No actionable P0, P1, or P2 findings remain.
+
 final result: passed
