@@ -3,7 +3,7 @@ const SHAPE_COLORS = ["text-sun", "text-rose", "text-sky", "text-jade"];
 
 function Row({ items, hidden }: { items: string[]; hidden?: boolean }) {
   return (
-    <span aria-hidden={hidden || undefined} className="flex shrink-0 items-center">
+    <span aria-hidden={hidden || undefined} className="flex min-w-[100vw] shrink-0 items-center justify-around">
       {items.map((item, i) => (
         <span key={i} className="flex items-center">
           <span className="px-5 font-display text-xs sm:text-sm">{item}</span>
