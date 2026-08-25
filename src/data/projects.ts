@@ -82,6 +82,26 @@ export const projects: Project[] = [
     linkLabel: "Visit ADED",
   },
   {
+    id: "ai-matching-platform",
+    title: "Confidential AI Matchmaking Platform",
+    coverAlt: "Editorial representation of two adults separately using a private mobile connection app in a cafe",
+    context: "AI-assisted mobile matching",
+    summary: "NDA-protected iOS and Android dating platform combining compatibility-based discovery, AI-assisted onboarding, real-time communication, community features, and guided relationship experiences.",
+    contribution: "Built the end-to-end product across Expo mobile experiences, Node.js and MongoDB services, real-time communication, cloud identity and media, and integrated AI capabilities.",
+    challenge: "Coordinating personalized discovery, rich onboarding, messaging, social features, assistant behavior, privacy, and production delivery while keeping the proprietary compatibility logic protected.",
+    highlights: [
+      "Built resumable onboarding, profile and preference management, personalized discovery, match decisions, mutual-match creation, and multilingual mobile journeys.",
+      "Implemented real-time chat and unread state, community activity, engagement and rewards flows, protected media handling, and operational notifications.",
+      "Integrated AI-assisted profile creation, conversation support, and personal guidance with structured validation, safety controls, recovery paths, and usage telemetry.",
+    ],
+    technical: [
+      "React Native, Expo, React Navigation, and React Query support the shared iOS and Android experience, including camera, location, secure storage, and localization.",
+      "Node.js, Express, MongoDB, and Mongoose provide authenticated service boundaries for profiles, onboarding, discovery, communication, social activity, rewards, and assistance.",
+      "Socket.IO, AWS Cognito, S3, Docker, GitHub Actions, EC2, Nginx, and Expo EAS support real-time behavior, cloud services, deployment, and mobile delivery.",
+    ],
+    techStack: ["React Native", "Expo", "React Query", "Node.js", "Express", "MongoDB", "Socket.IO", "AWS Cognito", "S3", "OpenAI", "Docker"],
+  },
+  {
     id: "voice-insight",
     title: "Voice Insight",
     coverAlt: "Editorial representation of a call-analysis workflow with a headset and audio notes",
@@ -140,6 +160,26 @@ export const projects: Project[] = [
       "CSV import/export and filename matching make batch operations possible instead of requiring one-at-a-time manual handling.",
     ],
     techStack: ["React", "Redux Toolkit", "React Query", "Ant Design", "Node.js", "Express", "MongoDB", "JWT", "S3", "CSV", "OpenAI"],
+  },
+  {
+    id: "scientific-research-platform",
+    title: "Confidential Scientific Research Platform",
+    coverAlt: "Editorial representation of a research team coordinating work across laboratory, web, tablet, and mobile tools",
+    context: "Scientific research operations",
+    summary: "NDA-protected platform in active development for institutional research teams, combining a staff web portal, iOS and Android participant app, and secure backend.",
+    contribution: "Built the product across role-scoped staff workflows, participant mobile journeys, secure data handling, messaging, notifications, auditability, and cloud deployment.",
+    challenge: "Translating specialized research workflows into a reliable multi-role system while preserving privacy, traceability, institutional data boundaries, and consistent web and mobile behavior.",
+    highlights: [
+      "Built staff workflows for study, site and team operations, participant coordination, visits, messaging, evidence handling, dashboards, and institutional oversight.",
+      "Built a bilingual Expo application with code-based access, onboarding, schedule and task views, secure sessions, offline retry, local notifications, and staff-participant messaging.",
+      "Implemented server-owned access boundaries, immutable and versioned evidence, append-only audit history, private file storage, and transaction-backed workflows.",
+    ],
+    technical: [
+      "React, TypeScript, Vite, Tailwind CSS, and TanStack Query power the multi-role staff portal and its operational workflows.",
+      "React Native and Expo support iOS and Android, English and Hebrew LTR/RTL experiences, secure storage, background work, notifications, and degraded-device states.",
+      "Express, Mongoose, MongoDB, JWT, Zod, AWS S3-compatible storage, EC2, PM2, and Nginx support the API, evidence handling, access control, and deployment architecture.",
+    ],
+    techStack: ["React", "TypeScript", "Vite", "TanStack Query", "React Native", "Expo", "Node.js", "Express", "MongoDB", "AWS S3", "JWT"],
   },
   {
     id: "ptbn",

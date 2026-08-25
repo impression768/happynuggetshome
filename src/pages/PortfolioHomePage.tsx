@@ -36,7 +36,7 @@ export function PortfolioHomePage() {
 
         <Marquee items={["Applied AI", "Product systems", "Web", "Mobile", "Backend", "Integrations", "Validation", "Human control"]} />
 
-        <section id="projects" className="scroll-mt-20 border-b-2 border-ink bg-cream"><div className="mx-auto max-w-6xl px-6 py-16 sm:py-20"><div className="flex flex-wrap items-end justify-between gap-6"><div><p className={`${sticker} rotate-1 bg-rose text-cream`}>Selected work</p><h2 className="mt-4 font-display text-3xl sm:text-4xl">PROJECTS</h2></div><p className="max-w-sm text-ink/70">Ten public project records—from product workflow and AI integration through web, mobile, backend, and operational tooling.</p></div>
+        <section id="projects" className="scroll-mt-20 border-b-2 border-ink bg-cream"><div className="mx-auto max-w-6xl px-6 py-16 sm:py-20"><div className="flex flex-wrap items-end justify-between gap-6"><div><p className={`${sticker} rotate-1 bg-rose text-cream`}>Selected work</p><h2 className="mt-4 font-display text-3xl sm:text-4xl">PROJECTS</h2></div><p className="max-w-sm text-ink/70">Twelve public project records—from product workflow and AI integration through web, mobile, backend, and operational tooling.</p></div>
           <div className="mt-10 grid gap-8 md:grid-cols-2">{projects.map((project, index) => <ProductCard key={project.id} title={project.title} href={`/projects/${project.id}/`} imageSrc={`/images/projects/${project.id}.webp`} imageAlt={project.coverAlt} imageLoading={index < 2 ? "eager" : "lazy"} context={project.context} description={project.summary} ctaClass={CARD_COLORS[index % CARD_COLORS.length]} rotate={CARD_ROTATIONS[index % CARD_ROTATIONS.length]} />)}</div>
         </div></section>
 
