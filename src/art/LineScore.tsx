@@ -1,4 +1,8 @@
+import { useId } from "react";
+
 export function LineScore({ className = "" }: { className?: string }) {
+  const hatchId = `score-hatch-${useId().replace(/:/g, "")}`;
+
   return (
     <svg
       viewBox="0 0 420 420"
@@ -8,7 +12,7 @@ export function LineScore({ className = "" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <pattern id="score-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+        <pattern id={hatchId} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
           <line x1="0" y1="0" x2="0" y2="7" stroke="#1b1d23" strokeWidth="1" />
         </pattern>
       </defs>
@@ -30,7 +34,7 @@ export function LineScore({ className = "" }: { className?: string }) {
         <circle cx="206" cy="216" r="108" strokeWidth="0.7" strokeDasharray="6 5" />
       </g>
 
-      <rect x="238" y="238" width="92" height="62" fill="url(#score-hatch)" opacity="0.75" transform="rotate(-8 284 269)" />
+      <rect x="238" y="238" width="92" height="62" fill={`url(#${hatchId})`} opacity="0.75" transform="rotate(-8 284 269)" />
 
       <g strokeLinecap="round">
         <line x1="120" y1="212" x2="162" y2="196" stroke="#f4571f" strokeWidth="9" />

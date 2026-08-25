@@ -1,4 +1,8 @@
+import { useId } from "react";
+
 export function SprayBloom({ className = "" }: { className?: string }) {
+  const blurId = `bloom-blur-${useId().replace(/:/g, "")}`;
+
   return (
     <svg
       viewBox="0 0 420 420"
@@ -8,14 +12,14 @@ export function SprayBloom({ className = "" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <filter id="bloom-blur" x="-40%" y="-40%" width="180%" height="180%">
+        <filter id={blurId} x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur stdDeviation="26" />
         </filter>
       </defs>
 
       <rect width="420" height="420" fill="#f8f4ec" />
 
-      <g filter="url(#bloom-blur)">
+      <g filter={`url(#${blurId})`}>
         <ellipse cx="150" cy="148" rx="128" ry="110" fill="#ec4d8b" opacity="0.85" />
         <ellipse cx="292" cy="118" rx="110" ry="95" fill="#f4571f" opacity="0.8" />
         <ellipse cx="252" cy="292" rx="140" ry="112" fill="#2746df" opacity="0.75" />
