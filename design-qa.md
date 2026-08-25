@@ -104,4 +104,14 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Mobile checks: `mobile-390x844.png` confirms the buttons wrap into a clear two-row layout without clipping or horizontal overflow. `mobile-about-target-390x844.png` confirms the CTA updates the URL to `#about` and leaves the About section approximately `80px` below the viewport top, clear of the fixed header.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. Browser diagnostics contained no warning or error entries for the implementation origin. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 Personalized Book clean-table correction
+
+- User-requested change: remove the many loose illustrated papers spread across the table in the Personalized Book Platform cover.
+- Image correction: the built-in ImageGen model removed only the loose picture sheets and reconstructed a clean wooden tabletop with matching grain, perspective, shadows, and warm lighting. The European father and child, reader-correct open book, tablet, cup, fruit, flowers, kitchen, camera angle, and square composition remain.
+- Final asset: `public/images/projects/personalized-book.webp`, optimized to `1200×1200` WebP at `125,208` bytes. Its alt text now describes the tablet's digital previews rather than the removed print proofs.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/personalized-book-clean-table/`.
+- Combined comparisons: `comparison-desktop.jpg` and `comparison-mobile.jpg` use matched source/implementation viewports and scroll positions. The mobile comparison makes the removed papers especially clear; both confirm the open book remains the focal point and the existing card dimensions, typography, border, rotation, CTA, and adjacent covers are unchanged.
+- Responsive and detail checks: desktop `1440×900`, mobile `390×844`, and `/projects/personalized-book/` load the complete `1200×1200` asset with no horizontal overflow. Browser diagnostics contain no warning or error entries for the implementation origin.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. No actionable P0, P1, or P2 findings remain.
+
 final result: passed

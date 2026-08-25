@@ -164,7 +164,7 @@ export const projects: Project[] = [
   {
     id: "personalized-book",
     title: "Personalized Book Platform",
-    coverAlt: "Editorial representation of a parent and child exploring a personalized picture book and print proofs",
+    coverAlt: "Editorial representation of a parent and child exploring a personalized picture book beside a tablet of digital previews",
     context: "Personalized commerce and print workflow",
     summary: "Multilingual children’s-book platform connecting storefront UX, guided personalization, payments, generated media, PDF production, and printing-house operations.",
     contribution: "Worked across the Next.js storefront, resumable personalization, checkout and order lifecycle, backend route handlers, media generation, print-ready assets, storage, and internal operations.",
