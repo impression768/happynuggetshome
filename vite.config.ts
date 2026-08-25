@@ -20,7 +20,7 @@ export default defineConfig({
         aded: resolve(root, "projects/aded/index.html"),
         aiMatchingPlatform: resolve(root, "projects/ai-matching-platform/index.html"),
         voiceInsight: resolve(root, "projects/voice-insight/index.html"),
-        nagi: resolve(root, "projects/nagi/index.html"),
+        confidentialWellbeingPlatform: resolve(root, "projects/confidential-wellbeing-platform/index.html"),
         dataCollection: resolve(root, "projects/data-collection/index.html"),
         scientificResearchPlatform: resolve(root, "projects/scientific-research-platform/index.html"),
         ptbn: resolve(root, "projects/ptbn/index.html"),

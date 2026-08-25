@@ -122,8 +122,8 @@ export const projects: Project[] = [
     techStack: ["Node.js", "Express", "Docker", "Docker Compose", "FFmpeg", "ffprobe", "JWT", "FastAPI integration", "Transcription"],
   },
   {
-    id: "nagi",
-    title: "NAGI",
+    id: "confidential-wellbeing-platform",
+    title: "Confidential Wellbeing Platform",
     coverAlt: "Editorial representation of a person using a calm non-contact wellbeing check-in",
     context: "Non-contact wellbeing platform",
     summary: "Web product combining non-contact face-scan measurement, personal baselines, visual condition summaries, guidance, history, and organization-level management without positioning itself as medical diagnosis.",
