@@ -135,4 +135,12 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - Combined comparisons: `comparison-desktop.jpg` and `comparison-mobile.jpg` use matched source/implementation viewports and scroll positions. They confirm the singular heading, compact single-line captions, unchanged paintings/frame treatment, clean responsive wrapping, and no horizontal overflow.
 - Verification: `npm ci`, `npm run build`, and `git diff --check` passed. Browser diagnostics contain no warning or error entries for the implementation origin. No actionable P0, P1, or P2 findings remain.
 
+## 2026-08-25 art-wall heading simplification
+
+- User-selected direction: simplified `ABSTRACTIONS I LIVE WITH` to the single-word heading `ABSTRACTIONS`, leaving the explanatory sentence beneath it to carry the personal context.
+- Shared-page consistency: the active portfolio and older shared `HomePage` consumer now use the same minimal heading; the paintings, researched artist/year captions, accessible source-work labels, wall sticker, supporting sentence, spacing system, and dark-section treatment remain unchanged.
+- Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/art-wall-heading/`, containing the verified `desktop-1440x900.png` and `mobile-390x844.png` captures.
+- Responsive verification: desktop `1440×900` and mobile `390×844` checks confirm the shorter heading remains aligned with the wall sticker and explanatory copy, introduces no horizontal overflow, and leaves the four-card grid unchanged.
+- Verification: `npm ci`, `npm run build`, and `git diff --check` passed. Browser diagnostics contain no warning or error entries for the implementation origin. No actionable P0, P1, or P2 findings remain.
+
 final result: passed

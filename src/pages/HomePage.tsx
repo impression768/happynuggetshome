@@ -99,9 +99,7 @@ export function HomePage() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className={`${sticker} -rotate-1 bg-jade text-cream`}>The studio wall</p>
-                <h2 className="mt-4 font-display text-3xl sm:text-4xl">
-                  ABSTRACTIONS <span className="text-outline-paper">I LIVE WITH</span>
-                </h2>
+                <h2 className="mt-4 font-display text-3xl sm:text-4xl">ABSTRACTIONS</h2>
               </div>
               <p className="max-w-sm text-paper/70">
                 Four studies in color—small homages to the abstract painters I return to while I build.
