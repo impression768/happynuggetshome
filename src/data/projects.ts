@@ -83,7 +83,7 @@ export const projects: Project[] = [
   },
   {
     id: "ai-matching-platform",
-    title: "Confidential AI Matchmaking Platform",
+    title: "AI Matchmaking Platform",
     coverAlt: "Editorial representation of two adults separately using a private mobile connection app in a cafe",
     context: "AI-assisted mobile matching",
     summary: "NDA-protected iOS and Android dating platform combining compatibility-based discovery, AI-assisted onboarding, real-time communication, community features, and guided relationship experiences.",
@@ -122,11 +122,11 @@ export const projects: Project[] = [
     techStack: ["Node.js", "Express", "Docker", "Docker Compose", "FFmpeg", "ffprobe", "JWT", "FastAPI integration", "Transcription"],
   },
   {
-    id: "confidential-wellbeing-platform",
-    title: "Confidential Wellbeing Platform",
+    id: "wellbeing-platform",
+    title: "Wellbeing Platform",
     coverAlt: "Editorial representation of a person using a calm non-contact wellbeing check-in",
     context: "Non-contact wellbeing platform",
-    summary: "Web product combining non-contact face-scan measurement, personal baselines, visual condition summaries, guidance, history, and organization-level management without positioning itself as medical diagnosis.",
+    summary: "NDA-protected web product combining non-contact face-scan measurement, personal baselines, visual condition summaries, guidance, history, and organization-level management without positioning itself as medical diagnosis.",
     contribution: "Built authenticated consumer journeys, face-scan integration, baseline-aware result flows, dashboards, history, exports, and organization-manager capabilities connected to Insight Genie APIs.",
     challenge: "Presenting unfamiliar measurement and baseline concepts clearly while handling camera flows, cold-start behavior, retry states, user history, role enforcement, and organization aggregation.",
     highlights: [
@@ -163,7 +163,7 @@ export const projects: Project[] = [
   },
   {
     id: "scientific-research-platform",
-    title: "Confidential Scientific Research Platform",
+    title: "Scientific Research Platform",
     coverAlt: "Editorial representation of a research team coordinating work across laboratory, web, tablet, and mobile tools",
     context: "Scientific research operations",
     summary: "NDA-protected platform in active development for institutional research teams, combining a staff web portal, iOS and Android participant app, and secure backend.",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
     id: "personalized-book",
     title: "Personalized Book Platform",
     coverAlt: "Editorial representation of a parent and child sharing a picture book beside a tablet",
-    context: "Confidential multilingual platform",
+    context: "Multilingual web platform",
     summary: "NDA-protected multilingual web platform spanning customer-facing and internal operational experiences.",
     contribution: "Worked across the full-stack product, connecting frontend journeys, backend services, data, integrations, and operational tooling.",
     challenge: "Keeping a multi-step product experience reliable across languages, user states, integrations, and internal workflows.",
