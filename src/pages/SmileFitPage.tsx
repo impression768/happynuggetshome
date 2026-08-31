@@ -54,7 +54,7 @@ export function SmileFitPage() {
                 <span className="text-outline">FIT</span>
               </h1>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/80">
-                A personal wellness app with short guided smile and facial exercise sessions — simple routines,
+                A personal wellness app with short guided smile and facial exercise sessions - simple routines,
                 repeatable practice, progress at your own pace.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">

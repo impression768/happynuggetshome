@@ -23,7 +23,7 @@ export function NuggetsPage() {
                 <span className="text-outline">GETS</span>
               </h1>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/80">
-                A phrase-learning app for creating, saving, and reviewing language cards — built for practical
+                A phrase-learning app for creating, saving, and reviewing language cards - built for practical
                 repetition, lightweight review, and everyday phrase discovery.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">

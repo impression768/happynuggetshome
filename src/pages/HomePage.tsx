@@ -33,7 +33,7 @@ export function HomePage() {
                 <span className="block text-outline">TECH</span>
               </h1>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/80">
-                We build focused mobile products for learning, wellness, and everyday routines — simple, practical,
+                We build focused mobile products for learning, wellness, and everyday routines - simple, practical,
                 and painted in loud color.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
@@ -102,7 +102,7 @@ export function HomePage() {
                 <h2 className="mt-4 font-display text-3xl sm:text-4xl">ABSTRACTIONS</h2>
               </div>
               <p className="max-w-sm text-paper/70">
-                Four studies in color—small homages to the abstract painters I return to while I build.
+                Four studies in color - small homages to the abstract painters I return to while I build.
               </p>
             </div>
 

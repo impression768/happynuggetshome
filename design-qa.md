@@ -1,4 +1,4 @@
-# Design QA — Eugene Livschitz portfolio
+# Design QA - Eugene Livschitz portfolio
 
 ## History
 
@@ -22,7 +22,7 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 - `npm run build` passed.
 - All ten project cards navigated to the expected `/projects/<id>/` route; every detail page's `Back to projects` link returned to `/#projects`.
 - Home `Projects`, `About`, and `Contact` navigation updated the expected hash and scrolled to the section.
-- Verified public external links: LinkedIn, GitHub, GitLab, GenieHR, Insight Genie, and ADED.
+- Verified public external links: LinkedIn, GitHub, GitLab, GenieHR, Insightgenie, and ADED.
 - `/nuggets/`, `/smilefit/`, and `/privacy/` rendered. `/privacy/` intentionally redirects to `/nuggets/#privacy`.
 - At both viewports, every checked route had `documentElement.scrollWidth === innerWidth` and no browser `warn`/`error` console entries.
 - Visual review found the expected paper/ink palette, Rubik Mono headings, hard shadows, abstract SVG artwork, marquee strips, stacked mobile layout, and responsive detail pages. No P0/P1 visual or interaction issue was found.
@@ -128,8 +128,8 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 ## 2026-08-25 art-wall attribution cleanup
 
 - User-requested copy change: changed the wall heading from `ABSTRACTIONS WE LIVE WITH` to `ABSTRACTIONS I LIVE WITH` and removed the invented study titles, `SVG on paper`, and portfolio creation year `2026` from the visible artwork captions.
-- Researched source dates: Sean Scully's *Backs and Fronts* — `1981` (Philadelphia Museum of Art); Katharina Grosse's *Untitled* — `2016` (Gagosian); Julie Mehretu's *Stadia II* — `2004` (Whitney Museum wall labels for the Carnegie Museum of Art work); Bridget Riley's *Cataract 3* — `1967` (British art catalogue and British Council Collection).
-- Visible caption result: `Sean Scully · 1981`, `Katharina Grosse · 2016`, `Julie Mehretu · 2004`, and `Bridget Riley · 1967`. Each figure's accessible label retains `Study after`, the artist, referenced work title, and year so the provenance remains honest and traceable without adding visual clutter.
+- Researched source dates currently used by the wall: Sean Scully's *Backs and Fronts* - `1981`; Yaacov Agam's *Double Metamorphosis, II* - `1964`; Lea Nikel's *Untitled* - `1986`; Bridget Riley's *Cataract 3* - `1967`.
+- Visible caption result: `Sean Scully · 1981`, `Yaacov Agam · 1964`, `Lea Nikel · 1986`, and `Bridget Riley · 1967`. Each figure's accessible label retains `Study after`, the artist, referenced work title, and year so the provenance remains honest and traceable without adding visual clutter.
 - Shared-component consistency: the active portfolio and older shared `HomePage` consumer use the same researched metadata; repository search confirms no `SVG on paper`, art-wall `2026`, or `WE LIVE WITH` remains in those paths.
 - Evidence directory: `/Users/yo.livy/.codex/visualizations/2026/08/25/01a0385a-93ee-7143-bfd1-81514d0b7b13/eugene-portfolio-qa-evidence/art-wall-captions/`.
 - Combined comparisons: `comparison-desktop.jpg` and `comparison-mobile.jpg` use matched source/implementation viewports and scroll positions. They confirm the singular heading, compact single-line captions, unchanged paintings/frame treatment, clean responsive wrapping, and no horizontal overflow.
@@ -146,7 +146,7 @@ After the in-app Browser outage was established, Chrome was authorized as the fa
 ## 2026-08-25 NDA-safe confidential project additions
 
 - Scope: added `AI Matchmaking Platform` and `Scientific Research Platform` as generalized NDA-protected hiring-portfolio records while keeping the internal product names, client identity, proprietary matching/scientific mechanics, screenshots, links, adoption claims, and unsupported outcomes private.
-- Content pattern: both records use the established project structure—context, summary, contribution, hard part, three implementation highlights, three technical details, and a focused technology list. The shared `MyPortfolioWeb` reference and active TypeScript data contain the same twelve records in the same order, excluding the active site's `coverAlt` field.
+- Content pattern: both records use the established project structure - context, summary, contribution, hard part, three implementation highlights, three technical details, and a focused technology list. The shared `MyPortfolioWeb` reference and active TypeScript data contain the same twelve records in the same order, excluding the active site's `coverAlt` field.
 - Cover generation: the built-in ImageGen model created two anonymous square editorial masters. The AI-matching cover uses a calm cafe scene with two adults and unreadable phone screens; the scientific cover uses an anonymous research team coordinating across laboratory, laptop, tablet, and mobile tools. No product UI, internal name, client brand, protocol text, logo, watermark, or proprietary mechanism is visible.
 - Final assets: `public/images/projects/ai-matching-platform.webp` and `public/images/projects/scientific-research-platform.webp`, each optimized to `1200 x 1200` WebP. Both are center-safe for the shallow card crop and remain complete on the square detail-page presentation.
 - Desktop browser QA at `1440 x 900`: the home page reports twelve public project records; both cards show the correct title, context, summary, cover, alt text, and link. Both detail routes show the full square cover and complete record, and their back links return to `/#projects`.

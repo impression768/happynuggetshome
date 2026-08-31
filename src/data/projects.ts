@@ -1,6 +1,7 @@
 export type Project = {
   id: string;
   title: string;
+  isVisible?: boolean;
   coverAlt: string;
   context: string;
   summary: string;
@@ -39,7 +40,7 @@ export const projects: Project[] = [
   },
   {
     id: "insight-genie",
-    title: "Insight Genie",
+    title: "Insightgenie",
     coverAlt: "Editorial representation of a professional reviewing voice and assessment insights",
     context: "Assessment and analytics platform",
     summary: "Customer-facing platform combining non-contact face-scan workflows, voice and customer-call analysis, protected client APIs, institutional management, dashboards, and structured reporting.",
@@ -57,7 +58,7 @@ export const projects: Project[] = [
     ],
     techStack: ["React", "Vite", "Redux Toolkit", "Node.js", "Express", "MongoDB", "AWS", "Docker Compose", "FFmpeg", "Groq"],
     url: "https://insightgenie.ai",
-    linkLabel: "Visit Insight Genie",
+    linkLabel: "Visit Insightgenie",
   },
   {
     id: "aded",
@@ -86,7 +87,7 @@ export const projects: Project[] = [
     title: "AI Matchmaking Platform",
     coverAlt: "Editorial representation of two adults separately using a private mobile connection app in a cafe",
     context: "AI-assisted mobile matching",
-    summary: "NDA-protected iOS and Android dating platform combining compatibility-based discovery, AI-assisted onboarding, real-time communication, community features, and guided relationship experiences.",
+    summary: "iOS and Android dating platform combining compatibility-based discovery, AI-assisted onboarding, real-time communication, community features, and guided relationship experiences.",
     contribution: "Built the end-to-end product across Expo mobile experiences, Node.js and MongoDB services, real-time communication, cloud identity and media, and integrated AI capabilities.",
     challenge: "Coordinating personalized discovery, rich onboarding, messaging, social features, assistant behavior, privacy, and production delivery while keeping the proprietary compatibility logic protected.",
     highlights: [
@@ -126,8 +127,8 @@ export const projects: Project[] = [
     title: "Wellbeing Platform",
     coverAlt: "Editorial representation of a person using a calm non-contact wellbeing check-in",
     context: "Non-contact wellbeing platform",
-    summary: "NDA-protected web product combining non-contact face-scan measurement, personal baselines, visual condition summaries, guidance, history, and organization-level management without positioning itself as medical diagnosis.",
-    contribution: "Built authenticated consumer journeys, face-scan integration, baseline-aware result flows, dashboards, history, exports, and organization-manager capabilities connected to Insight Genie APIs.",
+    summary: "Web product combining non-contact face-scan measurement, personal baselines, visual condition summaries, guidance, history, and organization-level management without positioning itself as medical diagnosis.",
+    contribution: "Built authenticated consumer journeys, face-scan integration, baseline-aware result flows, dashboards, history, exports, and organization-manager capabilities connected to Insightgenie APIs.",
     challenge: "Presenting unfamiliar measurement and baseline concepts clearly while handling camera flows, cold-start behavior, retry states, user history, role enforcement, and organization aggregation.",
     highlights: [
       "Built registration, confirmation, login, temporary-password replacement, profile, history, and role-aware navigation.",
@@ -135,7 +136,7 @@ export const projects: Project[] = [
       "Implemented population-to-personal baseline progression, life logs, trends, tables, CSV export, departments, member management, and aggregated views.",
     ],
     technical: [
-      "The React application consumes consumer authentication, organization, and face-scan APIs from the wider Insight Genie platform.",
+      "The React application consumes consumer authentication, organization, and face-scan APIs from the wider Insightgenie platform.",
       "Recharts and structured result components present latest values and historical trends while explicit empty, retry, and cold-start states explain missing context.",
       "Multilingual product surfaces and role-aware navigation support consumers and organization managers in one frontend.",
     ],
@@ -166,13 +167,13 @@ export const projects: Project[] = [
     title: "Scientific Research Platform",
     coverAlt: "Editorial representation of a research team coordinating work across laboratory, web, tablet, and mobile tools",
     context: "Scientific research operations",
-    summary: "NDA-protected platform in active development for institutional research teams, combining a staff web portal, iOS and Android participant app, and secure backend.",
+    summary: "Platform in active development for institutional research teams, combining a staff web portal, iOS and Android participant app, and secure backend.",
     contribution: "Built the product across role-scoped staff workflows, participant mobile journeys, secure data handling, messaging, notifications, auditability, and cloud deployment.",
     challenge: "Translating specialized research workflows into a reliable multi-role system while preserving privacy, traceability, institutional data boundaries, and consistent web and mobile behavior.",
     highlights: [
-      "Built staff workflows for study, site and team operations, participant coordination, visits, messaging, evidence handling, dashboards, and institutional oversight.",
-      "Built a bilingual Expo application with code-based access, onboarding, schedule and task views, secure sessions, offline retry, local notifications, and staff-participant messaging.",
-      "Implemented server-owned access boundaries, immutable and versioned evidence, append-only audit history, private file storage, and transaction-backed workflows.",
+      "Built connected web, mobile, and backend experiences for institutional teams and participants.",
+      "Shipped role-aware workflows, communication, and operational visibility across the product.",
+      "Established secure, traceable foundations for sensitive records and ongoing delivery.",
     ],
     technical: [
       "React, TypeScript, Vite, Tailwind CSS, and TanStack Query power the multi-role staff portal and its operational workflows.",
@@ -190,9 +191,9 @@ export const projects: Project[] = [
     contribution: "Built member-facing mobile journeys, backend business rules, internal operations tooling, and integrations for identity, billing, files, email, and mobile notifications.",
     challenge: "Keeping chapter membership, referrals, meetings, guests, events, profiles, payments, notifications, and administration consistent across three application surfaces.",
     highlights: [
-      "Built authentication, onboarding, chapter selection, business profiles, referrals, one-to-one meetings, guest invitations, events, search, statistics, and account flows.",
-      "Implemented backend rules for chapters, membership access, referrals, meetings, events, profiles, payments, and notifications.",
-      "Built admin workflows for users, admins, chapters, categories, events, guests, reporting, and operational management.",
+      "Built a coordinated member app, backend, and admin workspace for business-network operations.",
+      "Shipped member profiles, introductions, events, and day-to-day community flows.",
+      "Added secure administration, notifications, and reporting for network teams.",
     ],
     technical: [
       "React Native and Expo power the member application while React/Vite support internal administration.",
@@ -206,24 +207,25 @@ export const projects: Project[] = [
     title: "Personalized Book Platform",
     coverAlt: "Editorial representation of a parent and child sharing a picture book beside a tablet",
     context: "Multilingual web platform",
-    summary: "NDA-protected multilingual web platform spanning customer-facing and internal operational experiences.",
+    summary: "Multilingual web platform spanning customer-facing and internal operational experiences, with AI image-generation APIs orchestrated as part of the product workflow.",
     contribution: "Worked across the full-stack product, connecting frontend journeys, backend services, data, integrations, and operational tooling.",
     challenge: "Keeping a multi-step product experience reliable across languages, user states, integrations, and internal workflows.",
     highlights: [
       "Built customer-facing and internal workflows across a multilingual web application.",
-      "Implemented backend services, data handling, integrations, and secure cloud operations.",
+      "Orchestrated AI image-generation APIs as part of a validated product pipeline, carrying generated illustrations into the wider customer experience.",
       "Supported validation, recovery states, operational visibility, and ongoing production delivery.",
     ],
     technical: [
       "Worked across a Next.js and TypeScript application with MongoDB-backed services.",
-      "Implemented authenticated stateful workflows and external service integrations.",
+      "AI image generation sits within an orchestrated, validated pipeline with generation-state handling and reliable handoff into the wider workflow.",
       "Supported multilingual interfaces, cloud services, customer communications, and production operations.",
     ],
-    techStack: ["Next.js", "React", "TypeScript", "MongoDB", "AWS"],
+    techStack: ["Next.js", "React", "TypeScript", "MongoDB", "AWS", "AI image APIs"],
   },
   {
     id: "smilefit",
     title: "SmileFit",
+    isVisible: false,
     coverAlt: "Editorial representation of a private daily smile-practice session with a smartphone",
     context: "Camera-assisted daily practice",
     summary: "Local-first mobile app for short daily smile-practice sessions, progress awareness, streaks, education, and reminders; framed as wellbeing practice rather than diagnosis.",
@@ -244,6 +246,7 @@ export const projects: Project[] = [
   {
     id: "nuggets",
     title: "Nuggets",
+    isVisible: false,
     coverAlt: "Editorial representation of practical language practice during a café conversation",
     context: "AI-assisted language learning",
     summary: "Mobile app that turns a phrase into translation, learner-friendly pronunciation guidance, word-level meaning, saved practice content, and recurring vocabulary exposure.",
@@ -262,6 +265,8 @@ export const projects: Project[] = [
     techStack: ["React Native", "Expo", "React Query", "Firebase Auth", "Node.js", "Express 5", "MongoDB", "OpenAI", "WidgetKit", "Swift"],
   },
 ];
+
+export const visibleProjects = projects.filter((project) => project.isVisible !== false);
 
 export function getProject(id: string) {
   return projects.find((project) => project.id === id);
