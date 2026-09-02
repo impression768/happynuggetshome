@@ -1,6 +1,7 @@
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { Marquee } from "../components/Marquee";
+import { PortfolioContactWidget } from "../components/PortfolioContactWidget";
 import type { Project } from "../data/projects";
 import { button, sticker } from "../lib/ui";
 
@@ -30,6 +31,7 @@ export function ProjectPage({ project }: { project: Project }) {
         </div><a className={`${button} mt-10 bg-cobalt text-cream`} href="/#projects">Back to projects</a></div></article>
       </main>
       <SiteFooter />
+      <PortfolioContactWidget />
       <div className="grain" aria-hidden="true" />
     </>
   );

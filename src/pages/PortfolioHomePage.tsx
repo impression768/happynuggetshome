@@ -5,6 +5,7 @@ import { RileyWaves } from "../art/RileyWaves";
 import { ScullyBlocks } from "../art/ScullyBlocks";
 import { ArtFrame } from "../components/ArtFrame";
 import { Marquee } from "../components/Marquee";
+import { PortfolioContactWidget } from "../components/PortfolioContactWidget";
 import { ProductCard } from "../components/ProductCard";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
@@ -47,6 +48,7 @@ export function PortfolioHomePage() {
         <section id="contact" className="scroll-mt-20 border-t-2 border-ink bg-cream"><div className="mx-auto max-w-3xl px-6 py-16 text-center"><p className={`${sticker} rotate-1 bg-lilac text-cream`}>Contact</p><h2 className="mt-5 font-display text-2xl sm:text-3xl">LET'S TALK</h2><p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink/75">For a role, product problem, or engineering conversation, email me or find me on LinkedIn, GitHub, and GitLab.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><a className={`${button} bg-tangerine text-cream`} href="mailto:yo.livy7@gmail.com">Email Eugene</a><a className={`${button} bg-cream`} href="https://www.linkedin.com/in/livschitz" target="_blank" rel="noreferrer">LinkedIn</a><a className={`${button} bg-cream`} href="https://github.com/yo-livy" target="_blank" rel="noreferrer">GitHub</a><a className={`${button} bg-cream`} href="https://gitlab.com/yo-livy" target="_blank" rel="noreferrer">GitLab</a></div></div></section>
       </main>
       <SiteFooter />
+      <PortfolioContactWidget />
       <div className="grain" aria-hidden="true" />
     </>
   );
