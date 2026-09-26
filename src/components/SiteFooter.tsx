@@ -17,7 +17,7 @@ export function SiteFooter() {
             <a className="transition-colors hover:text-tangerine" href="/#projects">
               Projects
             </a>
-            <a className="transition-colors hover:text-sky" href="/#about">
+            <a className="transition-colors hover:text-sky" href="/experience/" title="Experience and professional profile">
               About
             </a>
             <a className="transition-colors hover:text-rose" href="/#contact">

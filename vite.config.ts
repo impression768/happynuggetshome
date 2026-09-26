@@ -12,6 +12,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: resolve(root, "index.html"),
+        experience: resolve(root, "experience/index.html"),
         nuggets: resolve(root, "nuggets/index.html"),
         smilefit: resolve(root, "smilefit/index.html"),
         privacy: resolve(root, "privacy/index.html"),

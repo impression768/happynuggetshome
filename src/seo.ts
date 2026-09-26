@@ -1,5 +1,6 @@
 // Describe the existing public pages consistently for search engines and text readers.
 import { profile } from "./data/profile";
+import { professionalProfile } from "./data/professionalProfile";
 import type { Project } from "./data/projects";
 
 export const siteUrl = "https://livytech.space";
@@ -11,11 +12,12 @@ const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({
 })[char]!);
 const safeJson = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 
-export function pageHead(project?: Project) {
-  const path = project ? `/projects/${project.id}/` : "/";
+export function pageHead(project?: Project, pageType: "home" | "experience" = "home") {
+  const isExperience = pageType === "experience";
+  const path = project ? `/projects/${project.id}/` : isExperience ? "/experience/" : "/";
   const canonical = absoluteUrl(path);
-  const title = project ? `${project.title} | ${profile.name}` : `${profile.name} | ${profile.role}`;
-  const description = project ? `${project.context}. ${project.summary}` : profile.description;
+  const title = project ? `${project.title} | ${profile.name}` : isExperience ? `Experience | ${profile.name}` : `${profile.name} | ${profile.role}`;
+  const description = project ? `${project.context}. ${project.summary}` : isExperience ? `${profile.name}: professional experience, core expertise, project evidence, education, and languages. ${profile.role} in ${professionalProfile.location}.` : profile.description;
   const image = absoluteUrl(project ? `/images/projects/${project.id}.webp` : "/livy-logo.png");
   const imageAlt = project?.coverAlt ?? "LivyTech logo";
   const markdown = absoluteUrl(project ? `${path}index.md` : "/profile.md");
@@ -68,10 +70,33 @@ export function projectMarkdown(project: Project) {
   ].join("\n\n") + "\n";
 }
 
+// Keep the detailed reading profile aligned with the public experience page.
 export function profileMarkdown(projects: Project[]) {
+  const details = professionalProfile;
   return [
-    `# ${profile.name}`, profile.role, `Canonical page: ${absoluteUrl("/")}`,
-    ...profile.introduction, "## About", ...profile.about, "## Selected projects",
+    `# ${profile.name}`, profile.role, details.location,
+    `Canonical page: ${absoluteUrl("/experience/")}`, details.summary,
+    "## Professional experience",
+    ...details.experience.map((job) => [
+      `### ${job.employer}`, job.role, `${job.period} · ${job.location}`,
+      job.highlights.map((item) => `- ${item}`).join("\n"),
+    ].join("\n\n")),
+    "## Core expertise",
+    ...details.skills.map((group) => `### ${group.area}\n\n${group.items.join(", ")}`),
+    "## Project evidence",
+    ...details.capabilities.map((capability) => [
+      `### ${capability.title}`, capability.description,
+      capability.projectIds.map((id) => {
+        const project = projects.find((item) => item.id === id);
+        if (!project) throw new Error(`Profile evidence must reference a selected public project: ${id}`);
+        return `- [${project.title}](${absoluteUrl(`/projects/${id}/`)})`;
+      }).join("\n"),
+    ].join("\n\n")),
+    "## Engineering approach", ...details.approach,
+    "## Education", details.education.institution, details.education.degree,
+    "## Languages", details.languages.map((item) => `- ${item.language} - ${item.level}`).join("\n"),
+    "## Experience scope", ...details.boundaries,
+    "## Selected projects",
     projects.map((project) => `- [${project.title}](${absoluteUrl(`/projects/${project.id}/`)}): ${project.context}`).join("\n"),
     "## Contact", `[Email ${profile.name}](mailto:${profile.email})`,
     ...profile.links.map((link) => `[${link.label}](${link.url})`),

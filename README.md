@@ -29,12 +29,15 @@ for the existing custom domain. This repository does not deploy as part of local
 
 ## Search and AI-readable content
 
-The homepage and the ten selected project routes are rendered to complete HTML at
+The homepage, experience page, and the ten selected project routes are rendered to complete HTML at
 build time using the same React components as the browser. React hydrates this HTML
 for interactions; development and legacy project pages still support client rendering.
 The design, styles, contact endpoint, and existing route paths are unchanged.
 
-`src/data/profile.ts` shares existing homepage copy with `/profile.md`.
+`src/data/profile.ts` holds the unchanged homepage copy and public contact links.
+`src/data/professionalProfile.ts` holds the curated public experience shared by
+`/experience/` and `/profile.md`; it contains no private job-search notes. The footer
+About link opens the experience page without changing the homepage layout.
 `src/data/projects.ts` remains the source for project pages and their `index.md`
 exports. Only `visibleProjects` enter `/sitemap.xml`, `/llms.txt`, and Markdown
 exports. Hidden portfolio project routes remain functional with `noindex, follow`;

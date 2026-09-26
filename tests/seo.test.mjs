@@ -9,7 +9,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const dist = process.env.SEO_DIST ?? join(root, "dist");
 const origin = "https://livytech.space";
 const ids = ["geniehr", "insight-genie", "aded", "ai-matching-platform", "voice-insight", "wellbeing-platform", "data-collection", "scientific-research-platform", "ptbn", "personalized-book"];
-const routes = ["/", ...ids.map((id) => `/projects/${id}/`)];
+const routes = ["/", "/experience/", ...ids.map((id) => `/projects/${id}/`)];
 const read = (path) => readFile(join(dist, path), "utf8");
 const htmlFor = (route) => read(`${route.slice(1)}index.html`);
 const captures = (text, expression) => [...text.matchAll(expression)].map((match) => match[1]);
@@ -24,6 +24,8 @@ test("every selected page has complete readable content before JavaScript execut
     if (route === "/") {
       assert.match(html, /I turn real business processes into reliable AI pipelines/);
       for (const id of ids) assert.ok(html.includes(`href="/projects/${id}/"`), id);
+    } else if (route === "/experience/") {
+      for (const heading of ["PROFESSIONAL EXPERIENCE", "CORE EXPERTISE", "PROJECT EVIDENCE", "EDUCATION AND LANGUAGES", "EXPERIENCE SCOPE"]) assert.ok(html.includes(heading), heading);
     } else {
       for (const heading of ["MY CONTRIBUTION", "THE HARD PART", "WHAT SHIPPED", "TECHNICAL DETAILS", "TECHNOLOGY"]) assert.ok(html.includes(heading), `${route}: ${heading}`);
     }
@@ -50,7 +52,7 @@ test("canonical, sharing, and structured metadata identify the correct individua
     const graph = JSON.parse(json[0])["@graph"];
     assert.equal(graph[0].name, "Eugene Livschitz");
     assert.equal(graph[1].url, `${origin}${route}`);
-    assert.equal(graph[1]["@type"], route === "/" ? "ProfilePage" : "WebPage");
+    assert.equal(graph[1]["@type"], route.startsWith("/projects/") ? "WebPage" : "ProfilePage");
     assert.equal(graph[0].sameAs.length, 3);
   }
   assert.equal(descriptions.size, routes.length);
@@ -69,7 +71,7 @@ test("sitemap and robots expose the canonical public route set without changing 
 test("Markdown discovery resolves to complete public records and preserves status qualifiers", async () => {
   const llms = await read("llms.txt");
   const markdownLinks = captures(llms, /\]\(https:\/\/livytech.space(\/[^)]+\.md)\)/g);
-  assert.equal(markdownLinks.length, routes.length);
+  assert.equal(markdownLinks.length, ids.length + 1);
   for (const path of markdownLinks) {
     const markdown = await read(path.slice(1));
     assert.match(markdown, /^# /);
@@ -82,7 +84,7 @@ test("Markdown discovery resolves to complete public records and preserves statu
   const research = await read("projects/scientific-research-platform/index.md");
   assert.match(research, /active development/);
   const profile = await read("profile.md");
-  assert.match(profile, /Over 5\+ years/);
+  assert.match(profile, /5\+ years/);
   assert.match(profile, /mailto:yo.livy7@gmail.com/);
 });
 
@@ -94,4 +96,39 @@ test("excluded project records stay out of discovery and legacy routes remain av
     assert.match(await htmlFor(`/projects/${id}/`), /<meta name="robots" content="noindex, follow"/);
   }
   for (const route of ["nuggets/index.html", "smilefit/index.html", "privacy/index.html"]) await access(join(dist, route));
+});
+
+// Independent confirmed facts protect the public publication boundary across both formats.
+test("expanded public experience is consistent, evidenced, and discoverable", async () => {
+  const html = await htmlFor("/experience/");
+  const markdown = await read("profile.md");
+  const body = html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1]
+    .replace(/<[^>]*>/g, " ").replace(/&#x27;|&#39;/g, "'").replace(/&amp;/g, "&").replace(/\s+/g, " ");
+  const facts = [
+    "Insightgenie", "Lead Developer / Full-Stack Engineer", "Jan 2023 - Present",
+    "Glance Tech", "Full-Stack Developer", "Mar 2020 - Sep 2022",
+    "CampusFlow", "Co-Founder / Implementation Engineer", "Jan 2015 - Mar 2020",
+    "Financial University", "Master's Degree in Economics - Financial Engineering and Financial Markets",
+    "English - Fluent", "Hebrew - Beginner", "Russian - Native",
+    "Python experience is integration", "primary backend ownership is in Node.js",
+    "Scientific Research Platform remains in active development",
+  ];
+  for (const fact of facts) {
+    assert.ok(body.includes(fact), `Missing visible fact: ${fact}`);
+    assert.ok(markdown.includes(fact), `Missing Markdown fact: ${fact}`);
+  }
+  assert.match(html, /Glance Tech<\/h3><p[^>]*>Full-Stack Developer<\/p>/);
+  assert.match(markdown, /### Glance Tech\n\nFull-Stack Developer\n\nMar 2020 - Sep 2022/);
+  for (const id of ["geniehr", "aded", "voice-insight", "data-collection", "ptbn"]) {
+    assert.ok(html.includes(`href="/projects/${id}/"`), id);
+    assert.ok(markdown.includes(`${origin}/projects/${id}/`), id);
+  }
+  assert.match(markdown, /Canonical page: https:\/\/livytech.space\/experience\//);
+  assert.ok((await htmlFor("/")).includes('href="/experience/"'));
+  const guide = await read("llms.txt");
+  assert.match(guide, /## Evidence by capability/);
+  assert.ok(guide.includes(`${origin}/experience/`));
+  for (const text of [body, markdown, guide]) {
+    assert.doesNotMatch(text, /ORCCA|ToTwo|Randomize Medicine|\bNAGI\b|CV_PROJECT_CONTEXT|\/Users\/|USD 10,000|no live coding|application_status/i);
+  }
 });

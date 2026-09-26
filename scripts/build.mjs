@@ -30,7 +30,7 @@ try {
       .replace("</head>", () => `  ${page.head}\n</head>`)
       .replace('<div id="root"></div>', () => `<div id="root">${page.html}</div>`);
     await writeFile(target, html);
-    await writeFile(join(dist, page.markdownFile), page.markdown);
+    if (page.markdownFile) await writeFile(join(dist, page.markdownFile), page.markdown);
   }
   // Keep legacy project URLs functional without promoting excluded portfolio records.
   for (const path of hiddenPaths) {
