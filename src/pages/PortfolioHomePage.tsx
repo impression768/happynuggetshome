@@ -12,6 +12,7 @@ import { SiteHeader } from "../components/SiteHeader";
 import { profile } from "../data/profile";
 import { visibleProjects } from "../data/projects";
 import { button, sticker } from "../lib/ui";
+import { useHashScroll } from "../lib/useHashScroll";
 
 const WALL = [
   { artist: "Sean Scully", sourceTitle: "Backs and Fronts", year: "1981", rotate: "rotate-[-1.25deg]", Art: ScullyBlocks },
@@ -23,10 +24,12 @@ const CARD_COLORS = ["bg-tangerine text-cream", "bg-cobalt text-cream", "bg-jade
 const CARD_ROTATIONS = ["md:-rotate-1", "md:rotate-1", "md:rotate-[0.5deg]", "md:-rotate-[0.5deg]"];
 
 export function PortfolioHomePage() {
+  // Resolve direct section links after the homepage content has mounted.
+  useHashScroll();
   return (
     <>
       <a className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:bg-sun focus:px-4 focus:py-2 focus:font-bold" href="#main-content">Skip to content</a>
-      <SiteHeader current="home" />
+      <SiteHeader current="home" trackSections />
       <main id="main-content">
         <section className="overflow-hidden"><div className="mx-auto grid max-w-6xl items-center gap-10 px-6 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20"><div>
           <p className={`${sticker} -rotate-2 bg-sun`}>Applied AI / Product Engineer</p>
