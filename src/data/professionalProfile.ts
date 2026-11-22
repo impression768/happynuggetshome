@@ -1,7 +1,7 @@
 // Verified public experience shared by the HTML profile and Markdown export.
 export const professionalProfile = {
   "location": "Tel Aviv, Israel",
-  "summary": "Applied AI / Product Engineer with 5+ years of software-development experience across web, mobile, backend, cloud, integrations, and AI-enabled workflows. Full-stack product engineering is the foundation for translating business processes into dependable software and AI systems.",
+  "summary": "Applied AI / Product Engineer with 6+ years of software-development experience across web, mobile, backend, cloud, integrations, and AI-enabled workflows. Full-stack product engineering is the foundation for translating business processes into dependable software and AI systems.",
   "experience": [
     {
       "employer": "Insightgenie",

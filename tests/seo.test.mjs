@@ -84,7 +84,7 @@ test("Markdown discovery resolves to complete public records and preserves statu
   const research = await read("projects/scientific-research-platform/index.md");
   assert.match(research, /active development/);
   const profile = await read("profile.md");
-  assert.match(profile, /5\+ years/);
+  assert.match(profile, /6\+ years/);
   assert.match(profile, /mailto:yo.livy7@gmail.com/);
 });
 

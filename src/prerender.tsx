@@ -25,7 +25,7 @@ export function renderPortfolio() {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((page) => `  <url><loc>${absoluteUrl(page.path)}</loc></url>`).join("\n")}\n</urlset>\n`;
   const robots = `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nSitemap: ${absoluteUrl("/sitemap.xml")}\n`;
   const llms = [
-    `# ${profile.name}`, `> ${profile.name} is an ${profile.role} in ${professionalProfile.location}, with 5+ years of software-development experience across web, mobile, backend, cloud, integrations, and AI-enabled workflows.`,
+    `# ${profile.name}`, `> ${profile.name} is an ${profile.role} in ${professionalProfile.location}, with 6+ years of software-development experience across web, mobile, backend, cloud, integrations, and AI-enabled workflows.`,
     "## Profile",
     `- [Professional profile](${absoluteUrl("/profile.md")}): Employment, core expertise, evidence by capability, engineering approach, education, languages, and experience scope.`,
     `- [Experience page](${absoluteUrl("/experience/")}): Human-readable professional profile.`,
